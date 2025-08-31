@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-default": "^0.25.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-slidev": "^1.0.5"
+  }
 }
