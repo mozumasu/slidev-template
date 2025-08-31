@@ -90,3 +90,20 @@ pnpm create slidev-theme slidev-theme-sea
 > 例として、slidev-theme-nameまたは@scope/slidev-theme- nameのような形式が適切です。
 > package.json ファイルの keywords フィールドに "slidev-theme" と "slidev" を追加してください。
 > ref: [Writing Themes | Slidev](https://sli.dev/guide/write-theme)
+
+```sh
+# 作成したテーマのディレクトリへ移動
+cd !$
+
+# 起動してテーマの内容を確認
+pnpm run dev
+```
+
+自分のスライドに設定できるか確認する
+テーマを公開していない場合は直接ディレクトリを指定する
+
+```sh
+---
+theme: ./slidev-theme-sea
+---
+```
