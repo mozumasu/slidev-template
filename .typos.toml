@@ -1,0 +1,5 @@
+[default.extend-words]
+PN = "PN"
+
+[default]
+detect = ["en", "ja"]
