@@ -73,3 +73,20 @@ pnpm i -D prettier prettier-plugin-slidev
 ```
 
 > ref: [Prettier Plugin | Slidev](https://sli.dev/features/prettier-plugin)
+
+---
+
+## スライドテーマの作成
+
+ジェネレーターの使用してテーマを作成する
+
+```sh
+pnpm create slidev-theme slidev-theme-sea
+```
+
+> [!NOTE]
+> テーマは以下の規約に従う必要があります：
+> パッケージ名はslidev-theme-で始める必要があります。
+> 例として、slidev-theme-nameまたは@scope/slidev-theme- nameのような形式が適切です。
+> package.json ファイルの keywords フィールドに "slidev-theme" と "slidev" を追加してください。
+> ref: [Writing Themes | Slidev](https://sli.dev/guide/write-theme)
