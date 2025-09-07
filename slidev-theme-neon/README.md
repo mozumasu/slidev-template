@@ -1,50 +1,66 @@
 # slidev-theme-neon
 
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-neon?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-neon)
+A Neon theme for Slidev with animated polygon backgrounds.
 
-A (...) theme for [Slidev](https://github.com/slidevjs/slidev).
+## Features
 
-<!--
-  Learn more about how to write a theme:
-  https://sli.dev/guide/write-theme.html
---->
+- ✨ **3つのNeonバリエーション**:
+  - Default: 紫・青・マゼンタの組み合わせ
+  - Cyberpunk: マゼンタ・シアン・イエローの鮮やかな配色
+  - Synthwave: ピンク・パープル・ブルーのレトロな雰囲気
 
-<!--
-  run `npm run dev` to check out the slides for more details of how to start writing a theme
--->
+- 🎨 **動的なポリゴンアニメーション**: スライドごとに変化する幾何学的パターン
+- 🌈 **色相回転エフェクト**: 時間とともに変化する色彩
+- ⌨️ **キーボードショートカット**: Wキーでテーマバリエーション切り替え
 
-<!--
-  Put some screenshots here to demonstrate your theme
+## Installation
 
-  Live demo: [...]
--->
+Add the following to your `package.json`:
 
-## Install
+```json
+{
+  "devDependencies": {
+    "slidev-theme-neon": "file:./slidev-theme-neon"
+  }
+}
+```
 
-Add the following frontmatter to your `slides.md`. Start Slidev then it will prompt you to install the theme automatically.
+Then run:
 
-<pre><code>---
-theme: <b>neon</b>
----</code></pre>
+```bash
+npm install
+# or
+pnpm install
+```
 
-Learn more about [how to use a theme](https://sli.dev/guide/theme-addon#use-theme).
+## Usage
 
-## Layouts
+In your slides markdown file:
 
-This theme provides the following layouts:
+```yaml
+---
+theme: neon
+---
+```
 
-> TODO:
+## Keyboard Shortcuts
 
-## Components
+- `W`: Switch between Neon themes (default → cyberpunk → synthwave)
 
-This theme provides the following components:
+## Theme Variants
 
-> TODO:
+### Default
 
-## Contributing
+紫・青・マゼンタのクラシックなNeonカラー
 
-- `npm install`
-- `npm run dev` to start theme preview of `example.md`
-- Edit the `example.md` and style to see the changes
-- `npm run export` to generate the preview PDF
-- `npm run screenshot` to generate the preview PNG
+### Cyberpunk
+
+鮮やかなマゼンタ・シアン・イエローのサイバーパンク風
+
+### Synthwave
+
+80年代風のピンク・パープル・ブルー
+
+## License
+
+MIT

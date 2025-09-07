@@ -1,34 +1,32 @@
 {
   "name": "slidev-theme-neon",
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "A Neon theme for Slidev with animated polygon backgrounds",
   "keywords": [
     "slidev-theme",
-    "slidev"
+    "slidev",
+    "neon",
+    "cyberpunk",
+    "synthwave"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=14.0.0",
+    "slidev": ">=0.19.0"
   },
-  "scripts": {
-    "build": "slidev build example.md",
-    "dev": "slidev example.md --open",
-    "export": "slidev export example.md",
-    "screenshot": "slidev export example.md --format png"
+  "slidev": {
+    "colorSchema": "dark",
+    "highlighter": "shiki"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozumasu/slidev-template"
+  },
+  "author": "もずます",
+  "license": "MIT",
+  "peerDependencies": {
+    "@slidev/client": "^0.19.0"
   },
   "dependencies": {
-    "@slidev/types": "^52.1.0"
-  },
-  "devDependencies": {
-    "@slidev/cli": "^52.1.0"
-  },
-  "//": "Learn more: https://sli.dev/guide/write-theme.html",
-  "slidev": {
-    "colorSchema": "both",
-    "defaults": {
-      "fonts": {
-        "sans": "Nunito Sans",
-        "mono": "Fira Code"
-      }
-    }
+    "vue": "^3.4.0"
   }
 }
