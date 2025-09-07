@@ -84,6 +84,14 @@ theme: neon
 
 - `neon-glow-[color]-colored` - 各色の色付きバージョン
 
+### 点滅エフェクト（アニメーション）
+
+- `neon-flicker` - 汎用点滅エフェクト（currentColor使用）
+- `neon-flicker-cyan` - シアン色の点滅
+- `neon-flicker-matrix` - Matrix風グリーンの点滅
+- `neon-flicker-fast` - 高速点滅（0.8秒）
+- `neon-flicker-slow` - ゆっくり点滅（3秒）
+
 ### テキストユーティリティ
 
 - **サイズ**: `text-xs` ~ `text-9xl`
@@ -96,6 +104,8 @@ theme: neon
 ```html
 <div class="neon-glow-cyan text-4xl font-bold">白抜きネオン</div>
 <div class="neon-glow-matrix-colored text-6xl uppercase">色付きネオン</div>
+<div class="neon-flicker-cyan text-5xl">点滅するネオン</div>
+<div class="neon-glow-purple neon-flicker-fast text-4xl">高速点滅</div>
 ```
 
 ## Keyboard Shortcuts

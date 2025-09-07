@@ -20,7 +20,7 @@ mdc: true
 
 ## CLI資産を活かせ
 
-# <span class="neon-glow-orange text-6xl font-bold">Claude Code</span>で整える
+# <span class="neon-flicker-cyan text-6xl font-bold">Claude Code</span>で整える
 
 # アウトプットワークフロー
 
@@ -72,6 +72,18 @@ layout: two-cols-header
 <div class="neon-glow-purple-colored text-4xl">Purple Colored</div>
 <div class="neon-glow-yellow-colored text-4xl">Yellow Colored</div>
 <div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
+
+---
+
+# 点滅ネオンエフェクトデモ
+
+<div class="neon-flicker-matrix text-6xl font-bold uppercase tracking-mega mb-8">MATRIX</div>
+
+## 速度バリエーション
+
+<div class="neon-glow-cyan neon-flicker-fast text-4xl mb-4">🚀 高速点滅</div>
+<div class="neon-glow-purple neon-flicker text-4xl mb-4">⚡ 通常速度</div>
+<div class="neon-glow-yellow neon-flicker-slow text-4xl">🌟 ゆっくり点滅</div>
 
 ---
 layout: default

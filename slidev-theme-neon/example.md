@@ -54,6 +54,23 @@ Press `W` to switch between neon themes
 - `uppercase` `lowercase` `capitalize` `normal-case`
 
 ---
+
+# 点滅ネオンエフェクト
+
+## リアルなネオンサイン風の点滅効果
+
+<div class="neon-flicker-cyan text-6xl font-bold uppercase tracking-mega">FLICKER</div>
+<div class="neon-flicker-matrix text-5xl font-bold">MATRIX STYLE</div>
+
+<br>
+
+### 速度バリエーション
+
+<div class="neon-glow-cyan neon-flicker-fast text-4xl">高速点滅</div>
+<div class="neon-glow-purple neon-flicker text-4xl">通常速度</div>
+<div class="neon-glow-yellow neon-flicker-slow text-4xl">ゆっくり点滅</div>
+
+---
 layout: default
 ---
 

@@ -215,6 +215,73 @@
     0 0 40px #ff3300;
 }
 
+/* 点滅アニメーション定義 */
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 2px currentColor,
+      0 0 25px currentColor,
+      0 0 10px currentColor,
+      0 0 40px currentColor;
+  }
+  20%, 24%, 55% {
+    opacity: 0.85;
+    text-shadow: 0 0 1px currentColor;
+  }
+}
+
+@keyframes neon-flicker-cyan {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 2px #0ff,
+      0 0 25px #0ff,
+      0 0 10px #0ff,
+      0 0 40px #0ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 1px #0ff;
+  }
+}
+
+@keyframes neon-flicker-matrix {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 2px #00ff41,
+      0 0 25px #00ff41,
+      0 0 10px #39ff14,
+      0 0 40px #39ff14;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 1px #00ff41;
+  }
+}
+
+/* 点滅エフェクトクラス */
+.neon-flicker {
+  animation: neon-flicker 2s infinite alternate;
+}
+
+.neon-flicker-cyan {
+  color: #fff;
+  animation: neon-flicker-cyan 2s infinite alternate;
+}
+
+.neon-flicker-matrix {
+  color: #fff;
+  animation: neon-flicker-matrix 2s infinite alternate;
+}
+
+/* 点滅エフェクト（高速） */
+.neon-flicker-fast {
+  animation: neon-flicker 0.8s infinite alternate;
+}
+
+/* 点滅エフェクト（ゆっくり） */
+.neon-flicker-slow {
+  animation: neon-flicker 3s infinite alternate;
+}
+
 /* Text Size Utilities - サイズ専用クラス */
 /* 極小サイズ */
 .text-xs {
