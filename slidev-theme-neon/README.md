@@ -43,6 +43,31 @@ theme: neon
 ---
 ```
 
+## Text Effects
+
+### ネオンエフェクト（白抜き）
+- `neon-glow-cyan` - シアンのネオングロー
+- `neon-glow-matrix` - Matrix風グリーングロー
+- `neon-glow-pink` - ピンクネオングロー
+- `neon-glow-purple` - パープルネオングロー
+- `neon-glow-yellow` - イエローネオングロー
+- `neon-glow-orange` - オレンジネオングロー
+
+### ネオンエフェクト（色付き）
+- `neon-glow-[color]-colored` - 各色の色付きバージョン
+
+### テキストユーティリティ
+- **サイズ**: `text-xs` ~ `text-9xl`
+- **太さ**: `font-thin` ~ `font-black`
+- **文字間隔**: `tracking-tighter` ~ `tracking-mega`
+- **変換**: `uppercase`, `lowercase`, `capitalize`
+
+### 使用例
+```html
+<div class="neon-glow-cyan text-4xl font-bold">白抜きネオン</div>
+<div class="neon-glow-matrix-colored text-6xl uppercase">色付きネオン</div>
+```
+
 ## Keyboard Shortcuts
 
 - `W`: Switch between Neon themes (default → cyberpunk → synthwave)
