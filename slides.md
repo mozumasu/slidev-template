@@ -468,7 +468,9 @@ layout: default
 
 ---
 
-# 再現してみた
+# 再現できた
+
+<div class="small-code" style="max-height: 80vh; overflow-y: auto;">
 
 ```lua
 local wezterm = require("wezterm")
@@ -613,3 +615,34 @@ end
 
 return module
 ```
+
+</div>
+
+---
+
+# 設定はこちら
+
+<div class="flex justify-center">
+  <a href="https://github.com/mozumasu/dotfiles" target="_blank">
+    <img src="https://opengraph.githubassets.com/1/mozumasu/dotfiles"
+         alt="GitHub Repository"
+         style="max-width: 90%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+  </a>
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# ご清聴ありがとうございました
+
+<div class="mt-10 text-2xl opacity-70">
+  <p>@mozumasu</p>
+</div>
+
+<div class="mt-10">
+  <div class="text-xl neon-glow-cyan">
+    CLIで快適なアウトプットライフを！
+  </div>
+</div>
