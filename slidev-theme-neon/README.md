@@ -123,6 +123,85 @@ theme: neon
 <div class="neon-flicker-orange text-6xl">オレンジ点滅</div>
 ```
 
+## カスタムコンポーネント
+
+### NeonCodeBlock
+ネオンスタイルのコードブロック表示
+
+```html
+<NeonCodeBlock 
+  :code="`your code here`"
+  lang="javascript"
+  title="タイトル"
+  glow-color="cyan"
+/>
+```
+
+### NeonProfile
+自己紹介スライド用コンポーネント
+
+```html
+<NeonProfile
+  name="名前"
+  title="役職"
+  bio="自己紹介文"
+  :skills="['スキル1', 'スキル2']"
+  :social="[
+    { platform: 'github', url: 'https://github.com/username' }
+  ]"
+  glow-color="purple"
+/>
+```
+
+### NeonCard
+汎用カードコンポーネント
+
+```html
+<NeonCard 
+  title="タイトル" 
+  subtitle="サブタイトル"
+  icon="⚡"
+  glow-color="cyan"
+  :flicker="true"
+>
+  カードの内容
+</NeonCard>
+```
+
+### NeonButton
+インタラクティブボタン
+
+```html
+<NeonButton 
+  glow-color="cyan"
+  variant="solid|outline|ghost"
+  size="sm|md|lg"
+  :flicker="true"
+  @click="handleClick"
+>
+  ボタンテキスト
+</NeonButton>
+```
+
+### NeonTimeline
+タイムライン表示
+
+```html
+<NeonTimeline 
+  :items="[
+    {
+      title: 'タイトル',
+      subtitle: 'サブタイトル',
+      description: '説明',
+      icon: '🎯',
+      date: '日付'
+    }
+  ]"
+  glow-color="matrix"
+  orientation="vertical|horizontal"
+/>
+```
+
 ## Keyboard Shortcuts
 
 - `W`: Switch between Neon themes (default → cyberpunk → synthwave)
