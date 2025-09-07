@@ -62,3 +62,62 @@
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(139, 92, 246, 0.3);
 }
+
+/* Neon Glow Text Effects */
+/* サブタイトル用のシアンネオン効果 */
+.neon-glow-cyan {
+  color: #fff;
+  text-shadow:
+    0 0 1px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: -1.2rem;
+}
+
+/* メインタイトル用のグリーンネオン効果（Matrix風） */
+.neon-glow-matrix {
+  color: #00ff41;
+  text-shadow:
+    0 0 1px #00ff41,
+    0 0 8px #00ff41,
+    0 0 4px #39ff14;
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+/* 追加のネオンバリエーション */
+/* ピンクネオン */
+.neon-glow-pink {
+  color: #ff10f0;
+  text-shadow:
+    0 0 1px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 40px #ff10f0;
+}
+
+/* パープルネオン */
+.neon-glow-purple {
+  color: #a78bfa;
+  text-shadow:
+    0 0 1px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 20px #8b5cf6,
+    0 0 30px #8b5cf6;
+}
+
+/* イエローネオン */
+.neon-glow-yellow {
+  color: #ffff00;
+  text-shadow:
+    0 0 1px #ffff00,
+    0 0 10px #ffff00,
+    0 0 15px #ffff00,
+    0 0 25px #ffff00;
+}

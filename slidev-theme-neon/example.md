@@ -8,6 +8,19 @@ Press `W` to switch between neon themes
 
 ---
 
+# Neon Text Effects
+
+<div class="neon-glow-cyan">Cyberpunk Style</div>
+<div class="neon-glow-matrix">MATRIX</div>
+
+<br>
+
+<div class="neon-glow-pink">Pink Neon</div>
+<div class="neon-glow-purple">Purple Glow</div>
+<div class="neon-glow-yellow">Yellow Shine</div>
+
+---
+
 # What is Slidev?
 
 Slidev is a slides maker and presenter powered by **Vue** and **Web technologies**.
