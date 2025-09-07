@@ -18,11 +18,14 @@ title: CLI資産を活かせ! Claude Codeで整えるアウトプットワーク
 mdc: true
 ---
 
-## CLI資産を活かせ
-
-# <span class="neon-glow-orange flicker text-6xl font-bold">Claude Code</span>で整える
-
-# アウトプットワークフロー
+<div class="text-center">
+  <div class="text-2xl mb-2">CLI資産を活かせ</div>
+  <div>
+    <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
+    <span class="text-3xl">で整える</span>
+  </div>
+  <div class="text-3xl mt-6">アウトプットワークフロー</div>
+</div>
 
 by もずます
 
