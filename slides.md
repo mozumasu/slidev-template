@@ -188,10 +188,10 @@ class: text-center
 
 ---
 layout: center
-class: text-center
+transition: slide-up
 ---
 
-# CLIのメリット: <span class="neon-glow-orange text-6xl">自由</span>
+# CLIのメリット <v-click><span class="neon-glow-orange text-6xl">自由</span></v-click>
 
 <div class="text-xl mt-10">
 <v-click>?🤔</v-click>
@@ -219,22 +219,19 @@ class: text-center
 </div>
 
 ---
-layout: default
+layout: two-cols-header
 ---
 
 # 1. ペイン管理で画面をすっきり
 
----
-layout: two-cols-header
----
-
-# ペインって何?
+<div class="mt-10">
+</div>
 
 ::left::
 
-## ペイン
+## ペインとは?
 
-ウィンドウ内の分割された領域
+ウィンドウ内の分割された領域のこと
 
 ::right::
 
@@ -374,7 +371,7 @@ layout: two-cols
 
 <br>
 
-## <span class="neon-glow-purple">"**Aliento**</span>で解決
+## <span class="neon-glow-purple">**Aliento**</span>で解決
 
 <https://inchman.gumroad.com/l/Aliento>
 
@@ -397,12 +394,16 @@ class: text-center
 
 ---
 layout: default
+transition: view-transition
+mdc: true
 ---
 
 # せっかくならCLIの推し機能を<br/>Claude Codeで使いたい
 
-- プロンプトごとにジャンプしてスクロール
-- edit-command-line
+<ul>
+<li class="view-transition-jump">プロンプトごとにジャンプしてスクロール</li>
+<li class="view-transition-edit">edit-command-line</li>
+</ul>
 
 <div class="mt-10 text-3xl text-red-400">
 どちらも未対応😭
@@ -416,10 +417,24 @@ layout: default
 </div>
 
 ---
+layout: center
+transition: view-transition
+mdc: true
+---
+
+# なら、設定すればいいじゃない
+
+<ul class="text-2xl">
+<li class="view-transition-jump">プロンプトごとにジャンプしてスクロール</li>
+<li class="view-transition-edit">edit-command-line</li>
+</ul>
+
+---
+transition: view-transition
 layout: default
 ---
 
-# プロンプトごとにジャンプしてスクロール
+# プロンプトごとにジャンプしてスクロール {.inline-block.view-transition-jump}
 
 Hooksに仕込むがうまくいかず...
 
