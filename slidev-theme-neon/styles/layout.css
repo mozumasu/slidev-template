@@ -9,7 +9,7 @@
   @apply h-full grid;
 
   h1 {
-    @apply text-6xl leading-20;
+    @apply text-5xl font-bold mb-6;
     color: #ffffff;
     text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
   }
@@ -47,7 +47,7 @@
 .slidev-layout.default h2 {
   @apply text-3xl font-semibold mb-4;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
 }
 
 .slidev-layout.default h3 {
@@ -65,14 +65,11 @@
 }
 
 /* タイトルスライド用のデフォルトサイズ */
-.slidev-layout.cover h1,
-.slidev-layout.intro h1 {
-  @apply text-6xl;
-}
-
 .slidev-layout.cover h2,
 .slidev-layout.intro h2 {
-  @apply text-4xl;
+  @apply text-3xl font-semibold mb-4;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
 }
 
 .slidev-layout h2 {
@@ -96,16 +93,56 @@
   text-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
 }
 
-.slidev-layout code {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  color: #c4b5fd;
+/* コードブロック */
+pre {
+  background: rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari対応 */
 }
 
-.slidev-layout pre {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+/* コードブロック内の文字サイズ（デフォルト） */
+pre code,
+.shiki code,
+.slidev-code pre code {
+  font-size: 1.5rem !important; /* デフォルトを大きく */
 }
+
+/* スクロールバーのカスタマイズ - よりシンプルに */
+/* Webkit系ブラウザ（Chrome, Safari, Edge） */
+pre::-webkit-scrollbar,
+.slidev-code::-webkit-scrollbar,
+.shiki::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+pre::-webkit-scrollbar-track,
+.slidev-code::-webkit-scrollbar-track,
+.shiki::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb,
+.slidev-code::-webkit-scrollbar-thumb,
+.shiki::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+pre::-webkit-scrollbar-thumb:hover,
+.slidev-code::-webkit-scrollbar-thumb:hover,
+.shiki::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Firefox用 */
+pre,
+.slidev-code,
+.shiki {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
 
 /* Neon Glow Text Effects - 色とグロー効果のみ */
 /* シアンネオン効果 */
@@ -217,7 +254,13 @@
 
 /* 点滅アニメーション定義 */
 @keyframes neon-flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     opacity: 1;
     text-shadow:
       0 0 2px currentColor,
@@ -225,96 +268,154 @@
       0 0 10px currentColor,
       0 0 40px currentColor;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     opacity: 0.85;
     text-shadow: 0 0 1px currentColor;
   }
 }
 
 @keyframes neon-flicker-cyan {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #0ff,
       0 0 25px #0ff,
       0 0 10px #0ff,
       0 0 40px #0ff;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #0ff;
   }
 }
 
 @keyframes neon-flicker-matrix {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #00ff41,
       0 0 25px #00ff41,
       0 0 10px #39ff14,
       0 0 40px #39ff14;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #00ff41;
   }
 }
 
 @keyframes neon-flicker-orange {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #ff9500,
       0 0 25px #ff9500,
       0 0 10px #ff6600,
       0 0 40px #ff3300;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #ff9500;
   }
 }
 
 @keyframes neon-flicker-pink {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #ff10f0,
       0 0 25px #ff10f0,
       0 0 10px #ff10f0,
       0 0 40px #ff10f0;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #ff10f0;
   }
 }
 
 @keyframes neon-flicker-purple {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #8b5cf6,
       0 0 25px #8b5cf6,
       0 0 10px #a78bfa,
       0 0 40px #8b5cf6;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #8b5cf6;
   }
 }
 
 @keyframes neon-flicker-yellow {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     text-shadow:
       0 0 2px #ffff00,
       0 0 25px #ffff00,
       0 0 10px #ffff00,
       0 0 40px #ffff00;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     text-shadow: 0 0 1px #ffff00;
   }
 }
 
 /* 点滅アニメーションのみ（色を変更しない） */
 @keyframes flicker-only {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
     opacity: 1;
   }
-  20%, 24%, 55% {
+  20%,
+  24%,
+  55% {
     opacity: 0.4;
   }
 }

@@ -125,34 +125,6 @@ theme: neon
 
 ## カスタムコンポーネント
 
-### NeonCodeBlock
-ネオンスタイルのコードブロック表示
-
-```html
-<NeonCodeBlock 
-  :code="`your code here`"
-  lang="javascript"
-  title="タイトル"
-  glow-color="cyan"
-/>
-```
-
-### NeonProfile
-自己紹介スライド用コンポーネント
-
-```html
-<NeonProfile
-  name="名前"
-  title="役職"
-  bio="自己紹介文"
-  :skills="['スキル1', 'スキル2']"
-  :social="[
-    { platform: 'github', url: 'https://github.com/username' }
-  ]"
-  glow-color="purple"
-/>
-```
-
 ### NeonCard
 汎用カードコンポーネント
 

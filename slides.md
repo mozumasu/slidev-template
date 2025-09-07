@@ -1,7 +1,7 @@
 ---
 # try also 'default' to start simple
 theme: ./slidev-theme-neon
-colorSchema: light
+colorSchema: dark
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 # background: https://cover.sli.dev
@@ -19,17 +19,25 @@ mdc: true
 ---
 
 <div class="text-center">
-  <div class="text-2xl mb-2">CLI資産を活かせ</div>
+  <div class="font-handwritten-jp-casual text-2xl mb-2">CLI資産を活かせ !</div>
   <div>
     <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
-    <span class="text-3xl">で整える</span>
+    <span class="font-handwritten-jp-casual text-3xl">で整える</span>
   </div>
-  <div class="text-3xl mt-6">アウトプットワークフロー</div>
+  <div class="font-handwritten-jp-cassual text-4xl mt-6">アウトプットワークフロー</div>
 </div>
 
-by もずます
+<p class="opacity-35">もずます</p>
 
-<div class="neon-glow-matrix-colored orange absolute bottom-25 left-200 transform -rotate-15">2024/09/09 Qiita Bash</div>
+<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2024/09/09 Qiita Bash</div>
+
+---
+layout: default
+---
+
+# Table of contents
+
+<Toc maxDepth="1"></Toc>
 
 ---
 layout: default
@@ -66,6 +74,8 @@ layout: two-cols-header
 <div class="neon-glow-yellow text-4xl tracking-widest">Yellow Shine</div>
 <div class="neon-glow-orange text-4xl font-thin">Orange Flame</div>
 
+<div class="neon-glow-orange-colored text-3xl font-light tracking-wide">Cyberpunk Style</div>
+
 ::right::
 
 ## 色付きバージョン
@@ -77,29 +87,85 @@ layout: two-cols-header
 <div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
 
 ---
+layout: default
+---
+
+# 点滅ネオンエフェクトデモ
+
+<div class="neon-glow-orange flicker text-5xl mb-4">オレンジ色 + 点滅</div>
+<div class="neon-glow-purple-colored flicker-fast text-4xl mb-4">パープル色付き + 高速点滅</div>
+<div class="neon-glow-yellow flicker-slow text-4xl mb-6">イエロー色 + ゆっくり点滅</div>
+
+---
+layout: two-cols-header
+---
+
+# 手書き風フォントデモ
+
+::left::
+
+## 日本語対応の手書きフォント
+
+<div class="font-handwritten-jp text-3xl mb-3">教科書体風 (Klee One)</div>
+<div class="font-handwritten-jp-casual text-3xl mb-3">よもぎフォント</div>
+<div class="font-handwritten-jp-pop text-3xl mb-3">はちまるポップ</div>
+<div class="font-handwritten-jp-rock text-3xl mb-3">ロックンロール</div>
+<div class="font-handwritten-jp-reggae text-3xl mb-3">レゲエワン</div>
+<div class="font-handwritten-jp-syuku text-3xl mb-3">佑字 - 肅</div>
+<div class="font-handwritten-jp-mai text-3xl mb-3">佑字 - 舞</div>
+
+::right::
+
+## 日本語ネオン手書き
+
+<div class="neon-handwritten-jp-green text-3xl mb-3">緑のネオン手書き</div>
+<div class="neon-handwritten-jp-cyan text-3xl mb-3">シアンの教科書体</div>
+<div class="neon-handwritten-jp-orange text-3xl mb-3">オレンジロック</div>
+<div class="neon-handwritten-jp-pink text-3xl mb-3">ピンクのポップ</div>
+<div class="neon-handwritten-jp-purple flicker text-3xl">点滅するよもぎ</div>
+
+---
+
+# Code - 通常サイズ
+
+```sh
+pnpm install -g @slidev/cli
+```
+
+---
+
+# Code - 小さいサイズ
+
+<div class="small-code">
+
+長いコード用：
+
+```sh
+pnpm install -g @slidev/cli && slidev init my-presentation --theme neon && cd my-presentation && pnpm install
+```
+
+</div>
+
+<style>
+/* このスライドのコードを小さくする */
+.small-code pre.slidev-code code {
+  font-size: 1.0rem !important;
+}
+</style>
+
+---
 
 # Neonカード
 
 <div class="grid grid-cols-2 gap-6">
-  <NeonCard 
-    title="Feature 1" 
+  <NeonCard
+    title="Feature 1"
     subtitle="Amazing Feature"
     icon="⚡"
     glow-color="cyan"
   >
     これはNeonカードコンポーネントです。
     グラスモーフィズムとネオングローを組み合わせています。
-  </NeonCard>
-
-  <NeonCard 
-    title="Feature 2" 
-    subtitle="Cool Feature"
-    icon="🚀"
-    glow-color="pink"
-    :flicker="true"
-  >
-    点滅エフェクトも追加できます。
-    ホバー時にさらに輝きます。
   </NeonCard>
 </div>
 
@@ -131,20 +197,19 @@ layout: two-cols-header
 ### リンクボタン
 
 <div class="flex gap-4">
-  <NeonButton 
-    href="https://github.com/slidevjs/slidev" 
+  <NeonButton
+    href="https://github.com/slidevjs/slidev"
     target="_blank"
     glow-color="yellow"
   >
     GitHub →
   </NeonButton>
   
-  <NeonButton 
-    href="https://sli.dev" 
+  <NeonButton
+    href="<https://sli.dev>"
     target="_blank"
     glow-color="pink"
-    variant="outline"
-  >
+    variant="outline" >
     Documentation
   </NeonButton>
 </div>
@@ -153,7 +218,7 @@ layout: two-cols-header
 
 # タイムライン
 
-<NeonTimeline 
+<NeonTimeline
   :items="[
     {
       title: '2020年',
@@ -186,30 +251,6 @@ layout: two-cols-header
   ]"
   glow-color="matrix"
 />
-
----
-
-# 点滅ネオンエフェクトデモ
-
-## 点滅のみ（既存の色と組み合わせ）
-
-<div class="neon-glow-orange flicker text-5xl mb-4">オレンジ色 + 点滅</div>
-<div class="neon-glow-purple-colored flicker-fast text-4xl mb-4">パープル色付き + 高速点滅</div>
-<div class="neon-glow-yellow flicker-slow text-4xl mb-6">イエロー色 + ゆっくり点滅</div>
-
-## 色付き点滅（単独使用）
-
-<div class="neon-flicker-matrix text-6xl font-bold uppercase tracking-mega mb-4">MATRIX</div>
-<div class="neon-flicker-cyan text-5xl mb-4">シアン点滅</div>
-<div class="neon-flicker-orange text-5xl">オレンジ点滅</div>
-
----
-layout: default
----
-
-# Table of contents
-
-<Toc maxDepth="1"></Toc>
 
 ---
 
@@ -255,13 +296,7 @@ image: <https://cover.sli.dev>
 
 # Code
 
-Use code snippets and get automatic highlighting, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
+```ts
 import { computed, ref } from "vue";
 
 const count = ref(0);
@@ -269,28 +304,6 @@ const doubled = computed(() => count.value * 2);
 
 doubled.value = 2;
 ```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<!-- <<< @/snippets/external.ts#snippet -->
-
-<!-- Footer -->
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
 
 ---
 

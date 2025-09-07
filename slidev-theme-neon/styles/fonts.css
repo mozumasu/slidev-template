@@ -1,0 +1,230 @@
+/* Google Fonts Import for Handwritten Styles */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&family=Indie+Flower&family=Permanent+Marker&display=swap');
+
+/* Japanese Handwritten Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Yuji+Syuku&family=Yuji+Mai&family=Yomogi&family=RocknRoll+One&family=Reggae+One&family=Hachi+Maru+Pop&display=swap');
+
+/* Handwritten Font Utilities */
+.font-handwritten {
+  font-family: 'Kalam', cursive;
+  font-weight: 400;
+}
+
+.font-handwritten-bold {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+}
+
+.font-handwritten-light {
+  font-family: 'Kalam', cursive;
+  font-weight: 300;
+}
+
+.font-handwritten-cursive {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+}
+
+.font-handwritten-cursive-bold {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+}
+
+.font-handwritten-casual {
+  font-family: 'Indie Flower', cursive;
+}
+
+.font-handwritten-marker {
+  font-family: 'Permanent Marker', cursive;
+}
+
+/* Japanese Handwritten Font Utilities */
+.font-handwritten-jp {
+  font-family: 'Klee One', cursive;
+  font-weight: 400;
+}
+
+.font-handwritten-jp-bold {
+  font-family: 'Klee One', cursive;
+  font-weight: 600;
+}
+
+.font-handwritten-jp-casual {
+  font-family: 'Yomogi', cursive;
+}
+
+.font-handwritten-jp-pop {
+  font-family: 'Hachi Maru Pop', cursive;
+}
+
+.font-handwritten-jp-rock {
+  font-family: 'RocknRoll One', cursive;
+}
+
+.font-handwritten-jp-reggae {
+  font-family: 'Reggae One', cursive;
+}
+
+.font-handwritten-jp-syuku {
+  font-family: 'Yuji Syuku', cursive;
+}
+
+.font-handwritten-jp-mai {
+  font-family: 'Yuji Mai', cursive;
+}
+
+/* Handwritten + Neon Glow Combinations */
+.neon-handwritten-green {
+  font-family: 'Permanent Marker', cursive;
+  color: #00ff41;
+  text-shadow:
+    0 0 2px #00ff41,
+    0 0 10px #00ff41,
+    0 0 20px #00ff41,
+    0 0 30px #39ff14;
+}
+
+.neon-handwritten-cyan {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: #0ff;
+  text-shadow:
+    0 0 2px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
+}
+
+.neon-handwritten-orange {
+  font-family: 'Permanent Marker', cursive;
+  color: #ff9500;
+  text-shadow:
+    0 0 2px #ff9500,
+    0 0 10px #ff9500,
+    0 0 20px #ff9500,
+    0 0 30px #ff6600;
+}
+
+.neon-handwritten-pink {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  color: #ff10f0;
+  text-shadow:
+    0 0 2px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 40px #ff10f0;
+}
+
+.neon-handwritten-purple {
+  font-family: 'Indie Flower', cursive;
+  color: #a78bfa;
+  text-shadow:
+    0 0 2px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 20px #8b5cf6,
+    0 0 30px #8b5cf6;
+}
+
+.neon-handwritten-yellow {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  color: #ffff00;
+  text-shadow:
+    0 0 2px #ffff00,
+    0 0 10px #ffff00,
+    0 0 15px #ffff00,
+    0 0 25px #ffff00;
+}
+
+/* Japanese Handwritten + Neon Glow Combinations */
+.neon-handwritten-jp-green {
+  font-family: 'Reggae One', cursive;
+  color: #00ff41;
+  text-shadow:
+    0 0 2px #00ff41,
+    0 0 10px #00ff41,
+    0 0 20px #00ff41,
+    0 0 30px #39ff14;
+}
+
+.neon-handwritten-jp-cyan {
+  font-family: 'Klee One', cursive;
+  font-weight: 600;
+  color: #0ff;
+  text-shadow:
+    0 0 2px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
+}
+
+.neon-handwritten-jp-orange {
+  font-family: 'RocknRoll One', cursive;
+  color: #ff9500;
+  text-shadow:
+    0 0 2px #ff9500,
+    0 0 10px #ff9500,
+    0 0 20px #ff9500,
+    0 0 30px #ff6600;
+}
+
+.neon-handwritten-jp-pink {
+  font-family: 'Hachi Maru Pop', cursive;
+  color: #ff10f0;
+  text-shadow:
+    0 0 2px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 40px #ff10f0;
+}
+
+.neon-handwritten-jp-purple {
+  font-family: 'Yomogi', cursive;
+  color: #a78bfa;
+  text-shadow:
+    0 0 2px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 20px #8b5cf6,
+    0 0 30px #8b5cf6;
+}
+
+/* Handwritten with Flicker Animation */
+.neon-handwritten-flicker {
+  font-family: 'Permanent Marker', cursive;
+  animation: neon-flicker 2s infinite alternate;
+}
+
+.neon-handwritten-green.flicker {
+  animation: flicker-only 2s infinite alternate;
+}
+
+.neon-handwritten-orange.flicker {
+  animation: flicker-only 2s infinite alternate;
+}
+
+/* Additional Handwritten Styles */
+.handwritten-title {
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
+}
+
+.handwritten-subtitle {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.handwritten-note {
+  font-family: 'Indie Flower', cursive;
+  line-height: 1.6;
+}
+
+.handwritten-emphasis {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+}

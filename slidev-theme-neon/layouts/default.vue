@@ -9,7 +9,5 @@
 .default {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 </style>
-
