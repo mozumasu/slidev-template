@@ -141,6 +141,30 @@ pre code,
   background: transparent !important;
 }
 
+/* 小さいコードブロック用のユーティリティクラス */
+.small-code pre.slidev-code code,
+.small-code .shiki code,
+.small-code pre code {
+  font-size: 1.0rem !important;
+  line-height: 0.5 !important;
+}
+
+/* スクロール可能なコードブロック用のユーティリティクラス */
+.scrollable-code {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.scrollable-code-small {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.scrollable-code-large {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
 /* スクロールバーのカスタマイズ - よりシンプルに */
 /* Webkit系ブラウザ（Chrome, Safari, Edge） */
 pre::-webkit-scrollbar,
