@@ -286,12 +286,13 @@ layout: default
 layout: default
 ---
 
-# あわせて設定しておきたい通知設定
+### あわせて設定しておきたい通知設定
 
 処理が終わったらパネルと音で通知
 
-```json {all|7-8|all}
-// ~/.config/claude/settings.json
+<div class="small-code" id="notification-code">
+
+```json {all|2|3,14|9|9}
 {
   "hooks": {
     "Stop": [
@@ -320,23 +321,72 @@ layout: default
 }
 ```
 
+</div>
+
 🔔 [terminal-notifier](https://github.com/julienXX/terminal-notifier)
 
+<style>
+/* このスライドのコードを小さくする */
+.small-code pre.slidev-code code {
+  font-size: 1.0rem !important;
+  line-height: 0.5 !important;
+}
+
+/* コードブロックの横スクロール設定 */
+#notification-code pre {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* commandの行が長いので、表示領域を広げる */
+#notification-code {
+  max-width: 100%;
+}
+</style>
+
+<script setup>
+import { onMounted, watch } from 'vue'
+
+onMounted(() => {
+  // 現在のスライドでクリック数を監視
+  watch(() => $slidev?.nav?.clicks, (clicks) => {
+    if (clicks === 4) { // 5番目のクリック（0ベースなので3）
+      setTimeout(() => {
+        const codeBlock = document.querySelector('#notification-code pre')
+        if (codeBlock) {
+          codeBlock.scrollLeft = 550
+        }
+      }, 100)
+    }
+  })
+})
+</script>
+
 ---
-layout: default
+layout: two-cols
 ---
 
-# あわせて設定しておきたい通知設定
+<br>
 
-## 通知パネル消すためにマウスを使いたくない
+# 通知パネル消すために
 
-→ **Aliento**で解決
+# マウスを使いたくない
 
-[Aliento - Notification Manager](https://inchman.gumroad.com/l/Aliento)
+<br>
 
-<div class="mt-10 opacity-70">
-キーボードだけで通知を管理！
-</div>
+## <span class="neon-glow-purple">"**Aliento**</span>で解決
+
+<https://inchman.gumroad.com/l/Aliento>
+
+::right::
+
+<iframe
+  src="https://inchman.gumroad.com/l/Aliento?embed=true"
+  width="100%"
+  height="500"
+  frameborder="0"
+  style="border-radius: 8px; border: 1px solid #333;">
+</iframe>
 
 ---
 layout: center
