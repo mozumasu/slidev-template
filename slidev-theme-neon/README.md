@@ -86,11 +86,19 @@ theme: neon
 
 ### 点滅エフェクト（アニメーション）
 
+#### 点滅のみ（既存の色と組み合わせて使用）
+- `flicker` - 通常速度の点滅（2秒）
+- `flicker-fast` - 高速点滅（0.8秒）
+- `flicker-slow` - ゆっくり点滅（3秒）
+
+#### 色付き点滅エフェクト（単独使用）
 - `neon-flicker` - 汎用点滅エフェクト（currentColor使用）
 - `neon-flicker-cyan` - シアン色の点滅
 - `neon-flicker-matrix` - Matrix風グリーンの点滅
-- `neon-flicker-fast` - 高速点滅（0.8秒）
-- `neon-flicker-slow` - ゆっくり点滅（3秒）
+- `neon-flicker-orange` - オレンジ色の点滅
+- `neon-flicker-pink` - ピンク色の点滅
+- `neon-flicker-purple` - パープル色の点滅
+- `neon-flicker-yellow` - イエロー色の点滅
 
 ### テキストユーティリティ
 
@@ -102,10 +110,17 @@ theme: neon
 ### 使用例
 
 ```html
+<!-- 基本的なネオンエフェクト -->
 <div class="neon-glow-cyan text-4xl font-bold">白抜きネオン</div>
 <div class="neon-glow-matrix-colored text-6xl uppercase">色付きネオン</div>
-<div class="neon-flicker-cyan text-5xl">点滅するネオン</div>
-<div class="neon-glow-purple neon-flicker-fast text-4xl">高速点滅</div>
+
+<!-- 点滅のみ（既存の色と組み合わせ） -->
+<div class="neon-glow-orange flicker text-5xl">オレンジ色で点滅</div>
+<div class="neon-glow-purple-colored flicker-fast text-4xl">高速点滅</div>
+
+<!-- 色付き点滅（単独使用） -->
+<div class="neon-flicker-cyan text-5xl">シアン点滅</div>
+<div class="neon-flicker-orange text-6xl">オレンジ点滅</div>
 ```
 
 ## Keyboard Shortcuts

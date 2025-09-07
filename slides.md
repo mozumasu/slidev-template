@@ -20,7 +20,7 @@ mdc: true
 
 ## CLI資産を活かせ
 
-# <span class="neon-flicker-cyan text-6xl font-bold">Claude Code</span>で整える
+# <span class="neon-glow-orange flicker text-6xl font-bold">Claude Code</span>で整える
 
 # アウトプットワークフロー
 
@@ -77,13 +77,17 @@ layout: two-cols-header
 
 # 点滅ネオンエフェクトデモ
 
-<div class="neon-flicker-matrix text-6xl font-bold uppercase tracking-mega mb-8">MATRIX</div>
+## 点滅のみ（既存の色と組み合わせ）
 
-## 速度バリエーション
+<div class="neon-glow-orange flicker text-5xl mb-4">オレンジ色 + 点滅</div>
+<div class="neon-glow-purple-colored flicker-fast text-4xl mb-4">パープル色付き + 高速点滅</div>
+<div class="neon-glow-yellow flicker-slow text-4xl mb-6">イエロー色 + ゆっくり点滅</div>
 
-<div class="neon-glow-cyan neon-flicker-fast text-4xl mb-4">🚀 高速点滅</div>
-<div class="neon-glow-purple neon-flicker text-4xl mb-4">⚡ 通常速度</div>
-<div class="neon-glow-yellow neon-flicker-slow text-4xl">🌟 ゆっくり点滅</div>
+## 色付き点滅（単独使用）
+
+<div class="neon-flicker-matrix text-6xl font-bold uppercase tracking-mega mb-4">MATRIX</div>
+<div class="neon-flicker-cyan text-5xl mb-4">シアン点滅</div>
+<div class="neon-flicker-orange text-5xl">オレンジ点滅</div>
 
 ---
 layout: default
