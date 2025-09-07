@@ -132,6 +132,26 @@ layout: two-cols-header
 pnpm install -g @slidev/cli
 ```
 
+<br>
+
+## Code Group
+
+::code-group
+
+```sh [npm]
+npm i @slidev/cli
+```
+
+```sh [yarn]
+yarn add @slidev/cli
+```
+
+```sh [pnpm]
+pnpm add @slidev/cli
+```
+
+::
+
 ---
 
 # Code - 小さいサイズ
@@ -215,6 +235,8 @@ pnpm install -g @slidev/cli && slidev init my-presentation --theme neon && cd my
 </div>
 
 ---
+transition: slide-up
+---
 
 # タイムライン
 
@@ -254,26 +276,6 @@ pnpm install -g @slidev/cli && slidev init my-presentation --theme neon && cd my
 
 ---
 
-::code-group
-
-```sh [npm]
-npm i @slidev/cli
-```
-
-```sh [yarn]
-yarn add @slidev/cli
-```
-
-```sh [pnpm]
-pnpm add @slidev/cli
-```
-
-::
-
----
-transition: slide-up
----
-
 # Navigation
 
 Hover on the bottom-left corner to see the navigation's control panel, [learn more](https://sli.dev/guide/navigation.html)
@@ -286,24 +288,6 @@ Hover on the bottom-left corner to see the navigation's control panel, [learn mo
 | <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
 | <kbd>up</kbd>                                      | previous slide              |
 | <kbd>down</kbd>                                    | next slide                  |
-
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: <https://cover.sli.dev>
----
-
-# Code
-
-```ts
-import { computed, ref } from "vue";
-
-const count = ref(0);
-const doubled = computed(() => count.value * 2);
-
-doubled.value = 2;
-```
 
 ---
 

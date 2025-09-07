@@ -130,6 +130,8 @@ const glowClasses = computed(() => {
 .neon-timeline {
   position: relative;
   padding: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* 垂直タイムライン */
@@ -137,12 +139,16 @@ const glowClasses = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .timeline-vertical .timeline-item {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   position: relative;
+  max-width: 100%;
+  padding-right: 1rem; /* 右側に余白を追加 */
 }
 
 /* 水平タイムライン */
@@ -229,6 +235,8 @@ const glowClasses = computed(() => {
 /* コンテンツ */
 .timeline-content {
   flex: 1;
+  max-width: calc(100% - 4rem);
+  min-width: 0; /* flexアイテムの収縮を許可 */
 }
 
 .content-card {
@@ -239,6 +247,8 @@ const glowClasses = computed(() => {
   padding: 1.25rem;
   box-shadow: 0 0 15px;
   transition: all 0.3s ease;
+  word-wrap: break-word; /* 長いテキストの折り返し */
+  overflow-wrap: break-word;
 }
 
 .content-card:hover {
@@ -255,6 +265,8 @@ const glowClasses = computed(() => {
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 0.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .content-title {
