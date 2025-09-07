@@ -1,9 +1,10 @@
 ---
 # try also 'default' to start simple
-theme: ./slidev-theme-sea
+theme: ./slidev-theme-neon
+colorSchema: dark
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+# background: https://cover.sli.dev
 # apply any unocss classes to the current slide
 class: "text-center"
 # some information about the slides, markdown enabled
@@ -12,76 +13,23 @@ info: |
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-transition: slide-left
-title: Welcome to Slidev
+# transition: slide-left
+title: CLI資産を活かせ! Claude Codeで整えるアウトプットワークフロー
 mdc: true
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
-    Press Space for next page <div class="i-carbon:arrow-right inline-block"/>
-  </span>
+<div class="text-center">
+  <div class="font-handwritten-jp-casual text-2xl mb-2">CLI資産を活かせ !</div>
+  <div>
+    <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
+    <span class="font-handwritten-jp-casual text-3xl">で整える</span>
+  </div>
+  <div class="font-handwritten-jp-cassual text-4xl mt-6">アウトプットワークフロー</div>
 </div>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <div class="i-carbon:edit" />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+<p class="opacity-35">もずます</p>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
----
-transition: fade-out
----
-
-# What is Slidev?
-
-Slidev is a slide maker and accompanying presentation tool designed for developers. It consists of the following features:
-
-- 📝 **Text-based** - focus on the content with Markdown, and apply styles later
-- 🎨 **Themable** - themes can be shared and used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your slides
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-
-<br>
-<br>
-
-Read more about Slidev in [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tags in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
+<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2024/09/09 Qiita Bash</div>
 
 ---
 layout: default
@@ -89,15 +37,243 @@ layout: default
 
 # Table of contents
 
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
 <Toc maxDepth="1"></Toc>
 
 ---
+layout: default
+---
+
+# デフォルトサイズ適用例
+
+## 見出しレベル2
+
+これは通常のテキストです。個別にサイズクラスを指定せずに、テーマのデフォルトサイズが適用されています。
+
+### 見出しレベル3
+
+- リストアイテムもデフォルトサイズ
+- 自動的に適切なサイズで表示
+- クラス指定不要
+
+**太字テキスト**や*イタリック*も同じサイズ設定を継承します。
+
+---
+layout: two-cols-header
+---
+
+# Neon Text Effects
+
+::left::
+
+## 白抜きバージョン（デフォルト）
+
+<div class="neon-glow-cyan text-3xl font-light tracking-wide">Cyberpunk Style</div>
+<div class="neon-glow-matrix text-6xl font-bold tracking-mega uppercase">MATRIX</div>
+<div class="neon-glow-pink text-4xl">Pink Neon</div>
+<div class="neon-glow-purple text-4xl font-semibold">Purple Glow</div>
+<div class="neon-glow-yellow text-4xl tracking-widest">Yellow Shine</div>
+<div class="neon-glow-orange text-4xl font-thin">Orange Flame</div>
+
+<div class="neon-glow-orange-colored text-3xl font-light tracking-wide">Cyberpunk Style</div>
+
+::right::
+
+## 色付きバージョン
+
+<div class="neon-glow-matrix-colored text-6xl font-bold uppercase">MATRIX</div>
+<div class="neon-glow-pink-colored text-4xl">Pink Colored</div>
+<div class="neon-glow-purple-colored text-4xl">Purple Colored</div>
+<div class="neon-glow-yellow-colored text-4xl">Yellow Colored</div>
+<div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
+
+---
+layout: default
+---
+
+# 点滅ネオンエフェクトデモ
+
+<div class="neon-glow-orange flicker text-5xl mb-4">オレンジ色 + 点滅</div>
+<div class="neon-glow-purple-colored flicker-fast text-4xl mb-4">パープル色付き + 高速点滅</div>
+<div class="neon-glow-yellow flicker-slow text-4xl mb-6">イエロー色 + ゆっくり点滅</div>
+
+---
+layout: two-cols-header
+---
+
+# 手書き風フォントデモ
+
+::left::
+
+## 日本語対応の手書きフォント
+
+<div class="font-handwritten-jp text-3xl mb-3">教科書体風 (Klee One)</div>
+<div class="font-handwritten-jp-casual text-3xl mb-3">よもぎフォント</div>
+<div class="font-handwritten-jp-pop text-3xl mb-3">はちまるポップ</div>
+<div class="font-handwritten-jp-rock text-3xl mb-3">ロックンロール</div>
+<div class="font-handwritten-jp-reggae text-3xl mb-3">レゲエワン</div>
+<div class="font-handwritten-jp-syuku text-3xl mb-3">佑字 - 肅</div>
+<div class="font-handwritten-jp-mai text-3xl mb-3">佑字 - 舞</div>
+
+::right::
+
+## 日本語ネオン手書き
+
+<div class="neon-handwritten-jp-green text-3xl mb-3">緑のネオン手書き</div>
+<div class="neon-handwritten-jp-cyan text-3xl mb-3">シアンの教科書体</div>
+<div class="neon-handwritten-jp-orange text-3xl mb-3">オレンジロック</div>
+<div class="neon-handwritten-jp-pink text-3xl mb-3">ピンクのポップ</div>
+<div class="neon-handwritten-jp-purple flicker text-3xl">点滅するよもぎ</div>
+
+---
+
+# Code - 通常サイズ
+
+```sh
+pnpm install -g @slidev/cli
+```
+
+<br>
+
+## Code Group
+
+::code-group
+
+```sh [npm]
+npm i @slidev/cli
+```
+
+```sh [yarn]
+yarn add @slidev/cli
+```
+
+```sh [pnpm]
+pnpm add @slidev/cli
+```
+
+::
+
+---
+
+# Code - 小さいサイズ
+
+<div class="small-code">
+
+長いコード用：
+
+```sh
+pnpm install -g @slidev/cli && slidev init my-presentation --theme neon && cd my-presentation && pnpm install
+```
+
+</div>
+
+<style>
+/* このスライドのコードを小さくする */
+.small-code pre.slidev-code code {
+  font-size: 1.0rem !important;
+}
+</style>
+
+---
+
+# Neonカード
+
+<div class="grid grid-cols-2 gap-6">
+  <NeonCard
+    title="Feature 1"
+    subtitle="Amazing Feature"
+    icon="⚡"
+    glow-color="cyan"
+  >
+    これはNeonカードコンポーネントです。
+    グラスモーフィズムとネオングローを組み合わせています。
+  </NeonCard>
+</div>
+
+---
+
+# Neonボタン
+
+<div class="flex gap-4 flex-wrap">
+  <NeonButton glow-color="cyan" @click="console.log('Clicked!')">
+    Click Me
+  </NeonButton>
+  
+  <NeonButton glow-color="matrix" variant="outline">
+    Outline
+  </NeonButton>
+  
+  <NeonButton glow-color="purple" size="lg" :flicker="true">
+    Large & Flicker
+  </NeonButton>
+  
+  <NeonButton glow-color="orange" variant="ghost">
+    Ghost Button
+  </NeonButton>
+</div>
+
+<br>
+<br>
+
+### リンクボタン
+
+<div class="flex gap-4">
+  <NeonButton
+    href="https://github.com/slidevjs/slidev"
+    target="_blank"
+    glow-color="yellow"
+  >
+    GitHub →
+  </NeonButton>
+  
+  <NeonButton
+    href="<https://sli.dev>"
+    target="_blank"
+    glow-color="pink"
+    variant="outline" >
+    Documentation
+  </NeonButton>
+</div>
+
+---
 transition: slide-up
-level: 2
+---
+
+# タイムライン
+
+<NeonTimeline
+  :items="[
+    {
+      title: '2020年',
+      subtitle: 'プログラミング開始',
+      description: 'Web開発の世界に足を踏み入れる',
+      icon: '🎯',
+      date: '1月'
+    },
+    {
+      title: '2021年',
+      subtitle: 'フロントエンド専門',
+      description: 'Vue.jsとReactを習得',
+      icon: '💻',
+      date: '6月'
+    },
+    {
+      title: '2022年',
+      subtitle: 'フルスタック開発',
+      description: 'バックエンドも含めた開発を開始',
+      icon: '🚀',
+      date: '3月'
+    },
+    {
+      title: '2023年',
+      subtitle: 'CLI効率化の探求',
+      description: 'NeovimとzshでDX向上',
+      icon: '⚡',
+      date: '9月'
+    }
+  ]"
+  glow-color="matrix"
+/>
+
 ---
 
 # Navigation
@@ -112,61 +288,6 @@ Hover on the bottom-left corner to see the navigation's control panel, [learn mo
 | <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
 | <kbd>up</kbd>                                      | previous slide              |
 | <kbd>down</kbd>                                    | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: <https://cover.sli.dev>
----
-
-# Code
-
-Use code snippets and get automatic highlighting, and even types hover![^1]
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from "vue";
-
-const count = ref(0);
-const doubled = computed(() => count.value * 2);
-
-doubled.value = 2;
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<!-- <<< @/snippets/external.ts#snippet -->
-
-<!-- Footer -->
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
 
 ---
 
@@ -199,235 +320,3 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 
 </div>
 </div>
-
-<!--
-Presenter notes with **bold**, *italic*, and ~~strike~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switch between themes on a per-slide basis with just **one change** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div v-motion :initial="{ x: -80 }" :enter="{ x: 0 }">Slidev</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affect the current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-
-$$
-{1|3|all}
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectivness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
----
-layout: center
-class: text-center
----
-
-# Learn More
-
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)

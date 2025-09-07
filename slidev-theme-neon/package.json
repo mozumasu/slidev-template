@@ -1,0 +1,32 @@
+{
+  "name": "slidev-theme-neon",
+  "version": "1.0.0",
+  "description": "A Neon theme for Slidev with animated polygon backgrounds",
+  "keywords": [
+    "slidev-theme",
+    "slidev",
+    "neon",
+    "cyberpunk",
+    "synthwave"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=0.19.0"
+  },
+  "slidev": {
+    "colorSchema": "dark",
+    "highlighter": "shiki"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozumasu/slidev-template"
+  },
+  "author": "もずます",
+  "license": "MIT",
+  "peerDependencies": {
+    "@slidev/client": "^0.19.0"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  }
+}

@@ -1,0 +1,663 @@
+:root {
+  /* Neonテーマカラー */
+  /* `themeConfig`オプションで上書き可能 */
+  --slidev-theme-primary: #8b5cf6;
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  h1 {
+    @apply text-5xl font-bold mb-6;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  }
+
+  h1 + p {
+    @apply -mt-2 opacity-50 mb-4;
+    color: #e0e0e0;
+  }
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    @apply mt-10;
+  }
+}
+
+/* Neonテーマ用の追加スタイル */
+.slidev-layout {
+  color: #ffffff;
+  font-size: 1.125rem; /* デフォルトフォントサイズ: 18px */
+  line-height: 1.75;
+}
+
+/* デフォルトレイアウトの基本フォントサイズ */
+.slidev-layout.default {
+  padding: 2rem;
+}
+
+.slidev-layout.default h1 {
+  @apply text-5xl font-bold mb-6;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+}
+
+.slidev-layout.default h2 {
+  @apply text-3xl font-semibold mb-4;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+}
+
+.slidev-layout.default h3 {
+  @apply text-2xl font-medium mb-3;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.slidev-layout.default p {
+  @apply text-xl mb-4;
+}
+
+.slidev-layout.default li {
+  @apply text-lg;
+}
+
+/* タイトルスライド用のデフォルトサイズ */
+.slidev-layout.cover h2,
+.slidev-layout.intro h2 {
+  @apply text-3xl font-semibold mb-4;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+}
+
+.slidev-layout h2 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+}
+
+.slidev-layout h3 {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.slidev-layout a {
+  color: #a78bfa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.slidev-layout a:hover {
+  color: #c4b5fd;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
+}
+
+/* コードブロック */
+pre,
+.slidev-code {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); /* Safari対応 */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 1.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* code-groupのタブ部分 */
+.slidev-code-group-tabs,
+[class*="code-group"] .tabs,
+.code-tabs {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* タブアイテム */
+.slidev-code-group-tab,
+[class*="code-group"] .tab,
+.code-tab {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.3s ease;
+}
+
+/* アクティブタブ */
+.slidev-code-group-tab.active,
+[class*="code-group"] .tab.active,
+.code-tab.active,
+.slidev-code-group-tab[data-active="true"] {
+  background: rgba(139, 92, 246, 0.2) !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid #8b5cf6 !important;
+}
+
+/* コードブロック内の文字サイズ（デフォルト） */
+pre code,
+.shiki code,
+.slidev-code pre code {
+  font-size: 1.5rem !important; /* デフォルトを大きく */
+  background: transparent !important;
+}
+
+/* スクロールバーのカスタマイズ - よりシンプルに */
+/* Webkit系ブラウザ（Chrome, Safari, Edge） */
+pre::-webkit-scrollbar,
+.slidev-code::-webkit-scrollbar,
+.shiki::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+pre::-webkit-scrollbar-track,
+.slidev-code::-webkit-scrollbar-track,
+.shiki::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb,
+.slidev-code::-webkit-scrollbar-thumb,
+.shiki::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+pre::-webkit-scrollbar-thumb:hover,
+.slidev-code::-webkit-scrollbar-thumb:hover,
+.shiki::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Firefox用 */
+pre,
+.slidev-code,
+.shiki {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+
+/* Neon Glow Text Effects - 色とグロー効果のみ */
+/* シアンネオン効果 */
+.neon-glow-cyan {
+  color: #fff;
+  text-shadow:
+    0 0 1px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
+}
+
+/* グリーンネオン効果（Matrix風） */
+.neon-glow-matrix {
+  color: #fff;
+  text-shadow:
+    0 0 1px #00ff41,
+    0 0 8px #00ff41,
+    0 0 4px #39ff14;
+}
+
+/* 追加のネオンバリエーション */
+/* ピンクネオン */
+.neon-glow-pink {
+  color: #fff;
+  text-shadow:
+    0 0 1px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 40px #ff10f0;
+}
+
+/* パープルネオン */
+.neon-glow-purple {
+  color: #fff;
+  text-shadow:
+    0 0 1px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 20px #8b5cf6,
+    0 0 30px #8b5cf6;
+}
+
+/* イエローネオン */
+.neon-glow-yellow {
+  color: #fff;
+  text-shadow:
+    0 0 1px #ffff00,
+    0 0 10px #ffff00,
+    0 0 15px #ffff00,
+    0 0 25px #ffff00;
+}
+
+/* 色付きテキストバージョン（オプション） */
+.neon-glow-matrix-colored {
+  color: #00ff41;
+  text-shadow:
+    0 0 1px #00ff41,
+    0 0 8px #00ff41,
+    0 0 4px #39ff14;
+}
+
+.neon-glow-pink-colored {
+  color: #ff10f0;
+  text-shadow:
+    0 0 1px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 40px #ff10f0;
+}
+
+.neon-glow-purple-colored {
+  color: #a78bfa;
+  text-shadow:
+    0 0 1px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 20px #8b5cf6,
+    0 0 30px #8b5cf6;
+}
+
+.neon-glow-yellow-colored {
+  color: #ffff00;
+  text-shadow:
+    0 0 1px #ffff00,
+    0 0 10px #ffff00,
+    0 0 15px #ffff00,
+    0 0 25px #ffff00;
+}
+
+.neon-glow-orange-colored {
+  color: #ff9500;
+  text-shadow:
+    0 0 1px #ff9500,
+    0 0 10px #ff9500,
+    0 0 20px #ff9500,
+    0 0 30px #ff6600,
+    0 0 40px #ff3300;
+}
+
+/* オレンジネオン */
+.neon-glow-orange {
+  color: #fff;
+  text-shadow:
+    0 0 1px #ff9500,
+    0 0 10px #ff9500,
+    0 0 20px #ff9500,
+    0 0 30px #ff6600,
+    0 0 40px #ff3300;
+}
+
+/* 点滅アニメーション定義 */
+@keyframes neon-flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 2px currentColor,
+      0 0 25px currentColor,
+      0 0 10px currentColor,
+      0 0 40px currentColor;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.85;
+    text-shadow: 0 0 1px currentColor;
+  }
+}
+
+@keyframes neon-flicker-cyan {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #0ff,
+      0 0 25px #0ff,
+      0 0 10px #0ff,
+      0 0 40px #0ff;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #0ff;
+  }
+}
+
+@keyframes neon-flicker-matrix {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #00ff41,
+      0 0 25px #00ff41,
+      0 0 10px #39ff14,
+      0 0 40px #39ff14;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #00ff41;
+  }
+}
+
+@keyframes neon-flicker-orange {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #ff9500,
+      0 0 25px #ff9500,
+      0 0 10px #ff6600,
+      0 0 40px #ff3300;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #ff9500;
+  }
+}
+
+@keyframes neon-flicker-pink {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #ff10f0,
+      0 0 25px #ff10f0,
+      0 0 10px #ff10f0,
+      0 0 40px #ff10f0;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #ff10f0;
+  }
+}
+
+@keyframes neon-flicker-purple {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #8b5cf6,
+      0 0 25px #8b5cf6,
+      0 0 10px #a78bfa,
+      0 0 40px #8b5cf6;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #8b5cf6;
+  }
+}
+
+@keyframes neon-flicker-yellow {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow:
+      0 0 2px #ffff00,
+      0 0 25px #ffff00,
+      0 0 10px #ffff00,
+      0 0 40px #ffff00;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: 0 0 1px #ffff00;
+  }
+}
+
+/* 点滅アニメーションのみ（色を変更しない） */
+@keyframes flicker-only {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.4;
+  }
+}
+
+/* 点滅エフェクトクラス */
+.neon-flicker {
+  animation: neon-flicker 2s infinite alternate;
+}
+
+/* 点滅のみ（既存の色と組み合わせて使用） */
+.flicker {
+  animation: flicker-only 2s infinite alternate;
+}
+
+.flicker-fast {
+  animation: flicker-only 0.8s infinite alternate;
+}
+
+.flicker-slow {
+  animation: flicker-only 3s infinite alternate;
+}
+
+.neon-flicker-cyan {
+  color: #fff;
+  animation: neon-flicker-cyan 2s infinite alternate;
+}
+
+.neon-flicker-matrix {
+  color: #fff;
+  animation: neon-flicker-matrix 2s infinite alternate;
+}
+
+.neon-flicker-orange {
+  color: #fff;
+  animation: neon-flicker-orange 2s infinite alternate;
+}
+
+.neon-flicker-pink {
+  color: #fff;
+  animation: neon-flicker-pink 2s infinite alternate;
+}
+
+.neon-flicker-purple {
+  color: #fff;
+  animation: neon-flicker-purple 2s infinite alternate;
+}
+
+.neon-flicker-yellow {
+  color: #fff;
+  animation: neon-flicker-yellow 2s infinite alternate;
+}
+
+/* 点滅エフェクト（高速） */
+.neon-flicker-fast {
+  animation: neon-flicker 0.8s infinite alternate;
+}
+
+/* 点滅エフェクト（ゆっくり） */
+.neon-flicker-slow {
+  animation: neon-flicker 3s infinite alternate;
+}
+
+/* Text Size Utilities - サイズ専用クラス */
+/* 極小サイズ */
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+/* 小サイズ */
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* 標準サイズ */
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* 大サイズ */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+/* 特大サイズ */
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+/* Font Weight Utilities - 太さ専用クラス */
+.font-thin {
+  font-weight: 100;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+/* Letter Spacing Utilities - 文字間隔専用クラス */
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+.tracking-mega {
+  letter-spacing: 0.25em;
+}
+
+/* Text Transform Utilities - 大文字・小文字変換 */
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}

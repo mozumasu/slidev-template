@@ -4,6 +4,8 @@
 
 ```sh
 pnpm add -D @slidev/cli
+# テーマのsetupで使用
+pnpm add -D @slidev/types
 ```
 
 ## スライドの追加
