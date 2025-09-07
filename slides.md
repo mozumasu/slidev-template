@@ -1,9 +1,10 @@
 ---
 # try also 'default' to start simple
-theme: ./slidev-theme-sea
+theme: ./slidev-theme-neon
+colorSchema: light
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+# background: https://cover.sli.dev
 # apply any unocss classes to the current slide
 class: "text-center"
 # some information about the slides, markdown enabled
@@ -12,76 +13,65 @@ info: |
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-transition: slide-left
-title: Welcome to Slidev
+# transition: slide-left
+title: CLI資産を活かせ! Claude Codeで整えるアウトプットワークフロー
 mdc: true
 ---
 
-# Welcome to Slidev
+## CLI資産を活かせ
 
-Presentation slides for developers
+# <span class="neon-glow-orange text-6xl font-bold">Claude Code</span>で整える
 
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" flex="~ justify-center items-center gap-2" hover="bg-white bg-opacity-10">
-    Press Space for next page <div class="i-carbon:arrow-right inline-block"/>
-  </span>
-</div>
+# アウトプットワークフロー
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <div class="i-carbon:edit" />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
+by もずます
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<div class="neon-glow-matrix-colored orange absolute bottom-25 left-200 transform -rotate-15">2024/09/09 Qiita Bash</div>
 
 ---
-transition: fade-out
+layout: default
 ---
 
-# What is Slidev?
+# デフォルトサイズ適用例
 
-Slidev is a slide maker and accompanying presentation tool designed for developers. It consists of the following features:
+## 見出しレベル2
 
-- 📝 **Text-based** - focus on the content with Markdown, and apply styles later
-- 🎨 **Themable** - themes can be shared and used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your slides
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
+これは通常のテキストです。個別にサイズクラスを指定せずに、テーマのデフォルトサイズが適用されています。
 
-<br>
-<br>
+### 見出しレベル3
 
-Read more about Slidev in [Why Slidev?](https://sli.dev/guide/why)
+- リストアイテムもデフォルトサイズ
+- 自動的に適切なサイズで表示
+- クラス指定不要
 
-<!--
-You can have `style` tags in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+**太字テキスト**や*イタリック*も同じサイズ設定を継承します。
 
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
+---
+layout: two-cols-header
+---
 
-<!--
-Here is another comment.
--->
+# Neon Text Effects
+
+::left::
+
+## 白抜きバージョン（デフォルト）
+
+<div class="neon-glow-cyan text-3xl font-light tracking-wide">Cyberpunk Style</div>
+<div class="neon-glow-matrix text-6xl font-bold tracking-mega uppercase">MATRIX</div>
+<div class="neon-glow-pink text-4xl">Pink Neon</div>
+<div class="neon-glow-purple text-4xl font-semibold">Purple Glow</div>
+<div class="neon-glow-yellow text-4xl tracking-widest">Yellow Shine</div>
+<div class="neon-glow-orange text-4xl font-thin">Orange Flame</div>
+
+::right::
+
+## 色付きバージョン
+
+<div class="neon-glow-matrix-colored text-6xl font-bold uppercase">MATRIX</div>
+<div class="neon-glow-pink-colored text-4xl">Pink Colored</div>
+<div class="neon-glow-purple-colored text-4xl">Purple Colored</div>
+<div class="neon-glow-yellow-colored text-4xl">Yellow Colored</div>
+<div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
 
 ---
 layout: default
@@ -89,15 +79,28 @@ layout: default
 
 # Table of contents
 
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
 <Toc maxDepth="1"></Toc>
 
 ---
+
+::code-group
+
+```sh [npm]
+npm i @slidev/cli
+```
+
+```sh [yarn]
+yarn add @slidev/cli
+```
+
+```sh [pnpm]
+pnpm add @slidev/cli
+```
+
+::
+
+---
 transition: slide-up
-level: 2
 ---
 
 # Navigation
@@ -112,15 +115,6 @@ Hover on the bottom-left corner to see the navigation's control panel, [learn mo
 | <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
 | <kbd>up</kbd>                                      | previous slide              |
 | <kbd>down</kbd>                                    | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
 
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
 
