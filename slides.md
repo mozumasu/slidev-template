@@ -29,7 +29,7 @@ mdc: true
 
 <p class="opacity-35">もずます</p>
 
-<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2024/09/09 Qiita Bash</div>
+<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2025/09/08 Qiita Bash</div>
 
 ---
 layout: center
