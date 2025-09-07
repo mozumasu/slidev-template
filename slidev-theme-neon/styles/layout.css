@@ -141,6 +141,14 @@ pre code,
   background: transparent !important;
 }
 
+/* 小さいコードブロック用のユーティリティクラス */
+.small-code pre.slidev-code code,
+.small-code .shiki code,
+.small-code pre code {
+  font-size: 1.0rem !important;
+  line-height: 0.5 !important;
+}
+
 /* スクロールバーのカスタマイズ - よりシンプルに */
 /* Webkit系ブラウザ（Chrome, Safari, Edge） */
 pre::-webkit-scrollbar,
