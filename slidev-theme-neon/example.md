@@ -18,6 +18,7 @@ Press `W` to switch between neon themes
 <div class="neon-glow-pink">Pink Neon</div>
 <div class="neon-glow-purple">Purple Glow</div>
 <div class="neon-glow-yellow">Yellow Shine</div>
+<div class="neon-glow-orange">Orange Flame</div>
 
 ---
 
