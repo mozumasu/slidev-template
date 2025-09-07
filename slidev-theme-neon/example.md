@@ -10,19 +10,24 @@ Press `W` to switch between neon themes
 
 # Neon Text Effects
 
-組み合わせ例：
+## 白抜きバージョン（デフォルト）
 
 <div class="neon-glow-cyan text-3xl font-light tracking-wide">Cyberpunk Style</div>
-<div class="neon-glow-matrix text-8xl font-bold tracking-mega uppercase">MATRIX</div>
+<div class="neon-glow-matrix text-6xl font-bold tracking-mega uppercase">MATRIX</div>
+<div class="neon-glow-pink text-4xl">Pink Neon</div>
+<div class="neon-glow-purple text-4xl font-semibold">Purple Glow</div>
+<div class="neon-glow-yellow text-4xl tracking-widest">Yellow Shine</div>
+<div class="neon-glow-orange text-4xl font-thin">Orange Flame</div>
 
 <br>
 
-サイズバリエーション：
+## 色付きバージョン
 
-<div class="neon-glow-pink text-xl">Small Pink</div>
-<div class="neon-glow-purple text-4xl font-semibold">Medium Purple</div>
-<div class="neon-glow-yellow text-6xl font-black tracking-widest">Large Yellow</div>
-<div class="neon-glow-orange text-9xl font-thin">Huge Orange</div>
+<div class="neon-glow-matrix-colored text-6xl font-bold uppercase">MATRIX</div>
+<div class="neon-glow-pink-colored text-4xl">Pink Colored</div>
+<div class="neon-glow-purple-colored text-4xl">Purple Colored</div>
+<div class="neon-glow-yellow-colored text-4xl">Yellow Colored</div>
+<div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
 
 ---
 
