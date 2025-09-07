@@ -100,6 +100,8 @@ pre,
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%); /* Safari対応 */
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 1.5rem !important;
+  border-radius: 0.5rem !important;
 }
 
 /* code-groupのタブ部分 */
