@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/slidev-theme-sea?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-sea)
 
-A (...) theme for [Slidev](https://github.com/slidevjs/slidev).
+An ocean-themed Slidev theme with beautiful animated water effects powered by Three.js.
 
 <!--
   Learn more about how to write a theme:
@@ -33,13 +33,24 @@ Learn more about [how to use a theme](https://sli.dev/guide/theme-addon#use-them
 
 This theme provides the following layouts:
 
-> TODO:
+- **cover** - Opening slide with centered content
+- **intro** - Introduction slide with title emphasis
 
 ## Components
 
 This theme provides the following components:
 
-> TODO:
+- **OceanBackground** - Animated 3D ocean waves using Three.js
+- **ThemeIndicator** - Wave theme switcher (Tropical/Natural/Deep)
+- **global-bottom** - Global component that appears on all slides
+
+## Features
+
+- 🌊 **3D Ocean Animation** - Realistic water simulation with Gerstner waves
+- 🎨 **3 Wave Themes** - Tropical, Natural, and Deep ocean styles
+- ⚡ **Performance Optimized** - Built-in performance monitoring
+- 🎮 **Interactive Controls** - Press 'W' to switch wave themes
+- ✨ **Visual Effects** - Caustics, sparkles, foam, and shimmer effects
 
 ## Contributing
 
@@ -48,3 +59,9 @@ This theme provides the following components:
 - Edit the `example.md` and style to see the changes
 - `npm run export` to generate the preview PDF
 - `npm run screenshot` to generate the preview PNG
+
+---
+
+```sh
+pnpm add three
+```
