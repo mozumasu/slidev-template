@@ -51,6 +51,8 @@
 .column-left,
 .column-right {
   width: 100%;
+  font-size: 1.25rem; /* デフォルトの文字サイズを大きく */
+  line-height: 1.75;
 }
 
 /* 各カラム内の見出しスタイル */

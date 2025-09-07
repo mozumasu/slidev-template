@@ -9,5 +9,7 @@
 .default {
   display: flex;
   flex-direction: column;
+  font-size: 1.25rem;
+  line-height: 1.75;
 }
 </style>
