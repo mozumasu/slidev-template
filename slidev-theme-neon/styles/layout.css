@@ -29,6 +29,50 @@
 /* Neonテーマ用の追加スタイル */
 .slidev-layout {
   color: #ffffff;
+  font-size: 1.125rem; /* デフォルトフォントサイズ: 18px */
+  line-height: 1.75;
+}
+
+/* デフォルトレイアウトの基本フォントサイズ */
+.slidev-layout.default {
+  padding: 2rem;
+}
+
+.slidev-layout.default h1 {
+  @apply text-5xl font-bold mb-6;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+}
+
+.slidev-layout.default h2 {
+  @apply text-3xl font-semibold mb-4;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+}
+
+.slidev-layout.default h3 {
+  @apply text-2xl font-medium mb-3;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.slidev-layout.default p {
+  @apply text-xl mb-4;
+}
+
+.slidev-layout.default li {
+  @apply text-lg;
+}
+
+/* タイトルスライド用のデフォルトサイズ */
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  @apply text-6xl;
+}
+
+.slidev-layout.cover h2,
+.slidev-layout.intro h2 {
+  @apply text-4xl;
 }
 
 .slidev-layout h2 {

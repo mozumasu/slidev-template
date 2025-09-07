@@ -43,9 +43,36 @@ theme: neon
 ---
 ```
 
+## Default Font Sizes
+
+テーマにはデフォルトのフォントサイズが設定されています：
+
+- **基本テキスト**: 1.125rem (18px)
+- **H1見出し**: text-5xl (3rem) - カバー/イントロレイアウトでは text-6xl
+- **H2見出し**: text-3xl (1.875rem) - カバー/イントロレイアウトでは text-4xl
+- **H3見出し**: text-2xl (1.5rem)
+- **段落 (p)**: text-xl (1.25rem)
+- **リスト項目**: text-lg (1.125rem)
+
+### カスタマイズ方法
+
+スライドごとにデフォルトサイズを上書きする場合：
+
+```html
+<style scoped>
+  h1 {
+    @apply text-7xl;
+  }
+  p {
+    @apply text-2xl;
+  }
+</style>
+```
+
 ## Text Effects
 
 ### ネオンエフェクト（白抜き）
+
 - `neon-glow-cyan` - シアンのネオングロー
 - `neon-glow-matrix` - Matrix風グリーングロー
 - `neon-glow-pink` - ピンクネオングロー
@@ -54,15 +81,18 @@ theme: neon
 - `neon-glow-orange` - オレンジネオングロー
 
 ### ネオンエフェクト（色付き）
+
 - `neon-glow-[color]-colored` - 各色の色付きバージョン
 
 ### テキストユーティリティ
+
 - **サイズ**: `text-xs` ~ `text-9xl`
 - **太さ**: `font-thin` ~ `font-black`
 - **文字間隔**: `tracking-tighter` ~ `tracking-mega`
 - **変換**: `uppercase`, `lowercase`, `capitalize`
 
 ### 使用例
+
 ```html
 <div class="neon-glow-cyan text-4xl font-bold">白抜きネオン</div>
 <div class="neon-glow-matrix-colored text-6xl uppercase">色付きネオン</div>

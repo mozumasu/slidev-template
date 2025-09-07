@@ -34,20 +34,42 @@ Press `W` to switch between neon themes
 # Text Size & Style Utilities
 
 ## サイズクラス
+
 - `text-xs` `text-sm` `text-base` `text-lg` `text-xl`
 - `text-2xl` `text-3xl` `text-4xl` `text-5xl` `text-6xl`
 - `text-7xl` `text-8xl` `text-9xl`
 
 ## 太さクラス
+
 - `font-thin` `font-light` `font-normal` `font-medium`
 - `font-semibold` `font-bold` `font-extrabold` `font-black`
 
 ## 文字間隔クラス
+
 - `tracking-tighter` `tracking-tight` `tracking-normal`
 - `tracking-wide` `tracking-wider` `tracking-widest` `tracking-mega`
 
 ## 変換クラス
+
 - `uppercase` `lowercase` `capitalize` `normal-case`
+
+---
+layout: default
+---
+
+# デフォルトサイズのテスト
+
+## これはH2見出し（デフォルトサイズ）
+
+これは通常のテキストです。デフォルトのフォントサイズが自動的に適用されます。
+
+### H3見出しもデフォルトサイズ
+
+- リストアイテム1
+- リストアイテム2
+- リストアイテム3
+
+通常のパラグラフテキスト。個別にサイズクラスを指定しなくても、適切なサイズで表示されます。
 
 ---
 
