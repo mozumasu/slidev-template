@@ -28,8 +28,17 @@ const profile = {
   achievement: "Software Design 6月号にweztermの記事を寄稿しました",
 };
 
-// Profile image path
-const profileImage = computed(() => props.profileImage);
+// Profile image path with base path handling
+const profileImage = computed(() => {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const imagePath = props.profileImage;
+  
+  // If the path starts with /, prepend the base URL
+  if (imagePath.startsWith('/')) {
+    return baseUrl + imagePath.slice(1);
+  }
+  return imagePath;
+});
 
 // Auto theme detection (based on current background theme)
 const detectedTheme = ref<"neon" | "ocean">("ocean");
