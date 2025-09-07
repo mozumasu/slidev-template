@@ -32,291 +32,375 @@ mdc: true
 <div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2024/09/09 Qiita Bash</div>
 
 ---
+layout: center
+---
+
+<SelfIntroduction theme="neon" profileImage="/profile_mozumasu.jpeg" />
+
+---
+layout: center
+---
+
+# Claude Codeを選ぶ理由 <span class="neon-glow-green text-5xl">4選</span>
+
+---
 layout: default
 ---
 
-# Table of contents
+# 1. 便利機能が一通りある
 
-<Toc maxDepth="1"></Toc>
-
----
-layout: default
----
-
-# デフォルトサイズ適用例
-
-## 見出しレベル2
-
-これは通常のテキストです。個別にサイズクラスを指定せずに、テーマのデフォルトサイズが適用されています。
-
-### 見出しレベル3
-
-- リストアイテムもデフォルトサイズ
-- 自動的に適切なサイズで表示
-- クラス指定不要
-
-**太字テキスト**や*イタリック*も同じサイズ設定を継承します。
+<div class="grid grid-cols-2 gap-x-4" style="grid-template-columns: auto 1fr;">
+  <div class="flex items-baseline">
+    <span class="font-bold">スラッシュコマンド</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    スニペットみたいなやつ
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">サブエージェント</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    メインとは別にコンテキストを与えられる
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">MCPとの連携</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    外部ツールとの統合
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">resume/continue機能</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    セッション復帰
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">planモード</span> <span class="text-sm opacity-70 ml-2">(shift + tab)</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    方針を決めてから編集できる
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">/compactと/clear</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    コンテキスト管理
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">hooks</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    イベントに応じて指示したりコマンド実行
+  </div>
+  
+  <div class="flex items-baseline">
+    <span class="font-bold">ESC-ESC</span>
+  </div>
+  <div class="text-gray-400 pl-4">
+    任意の会話の位置に戻る
+  </div>
+</div>
 
 ---
 layout: two-cols-header
 ---
 
-# Neon Text Effects
+# CLIツールらしい機能
 
 ::left::
 
-## 白抜きバージョン（デフォルト）
+## 便利ショートカットキー
 
-<div class="neon-glow-cyan text-3xl font-light tracking-wide">Cyberpunk Style</div>
-<div class="neon-glow-matrix text-6xl font-bold tracking-mega uppercase">MATRIX</div>
-<div class="neon-glow-pink text-4xl">Pink Neon</div>
-<div class="neon-glow-purple text-4xl font-semibold">Purple Glow</div>
-<div class="neon-glow-yellow text-4xl tracking-widest">Yellow Shine</div>
-<div class="neon-glow-orange text-4xl font-thin">Orange Flame</div>
-
-<div class="neon-glow-orange-colored text-3xl font-light tracking-wide">Cyberpunk Style</div>
+- ドキュメント: [Interactive Mode](https://docs.anthropic.com/ja/docs/claude-code/interactive-mode)
+- `?` を入力すると追加のショートカットが表示される
+  - **undo** - 直前の操作を取り消し
+  - **suspend** - セッションを一時停止
 
 ::right::
 
-## 色付きバージョン
+<div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
 
-<div class="neon-glow-matrix-colored text-6xl font-bold uppercase">MATRIX</div>
-<div class="neon-glow-pink-colored text-4xl">Pink Colored</div>
-<div class="neon-glow-purple-colored text-4xl">Purple Colored</div>
-<div class="neon-glow-yellow-colored text-4xl">Yellow Colored</div>
-<div class="neon-glow-orange-colored text-4xl">Orange Colored</div>
+### 主なショートカットキー
 
----
-layout: default
----
+<div class="text-sm font-mono">
 
-# 点滅ネオンエフェクトデモ
-
-<div class="neon-glow-orange flicker text-5xl mb-4">オレンジ色 + 点滅</div>
-<div class="neon-glow-purple-colored flicker-fast text-4xl mb-4">パープル色付き + 高速点滅</div>
-<div class="neon-glow-yellow flicker-slow text-4xl mb-6">イエロー色 + ゆっくり点滅</div>
-
----
-layout: two-cols-header
----
-
-# 手書き風フォントデモ
-
-::left::
-
-## 日本語対応の手書きフォント
-
-<div class="font-handwritten-jp text-3xl mb-3">教科書体風 (Klee One)</div>
-<div class="font-handwritten-jp-casual text-3xl mb-3">よもぎフォント</div>
-<div class="font-handwritten-jp-pop text-3xl mb-3">はちまるポップ</div>
-<div class="font-handwritten-jp-rock text-3xl mb-3">ロックンロール</div>
-<div class="font-handwritten-jp-reggae text-3xl mb-3">レゲエワン</div>
-<div class="font-handwritten-jp-syuku text-3xl mb-3">佑字 - 肅</div>
-<div class="font-handwritten-jp-mai text-3xl mb-3">佑字 - 舞</div>
-
-::right::
-
-## 日本語ネオン手書き
-
-<div class="neon-handwritten-jp-green text-3xl mb-3">緑のネオン手書き</div>
-<div class="neon-handwritten-jp-cyan text-3xl mb-3">シアンの教科書体</div>
-<div class="neon-handwritten-jp-orange text-3xl mb-3">オレンジロック</div>
-<div class="neon-handwritten-jp-pink text-3xl mb-3">ピンクのポップ</div>
-<div class="neon-handwritten-jp-purple flicker text-3xl">点滅するよもぎ</div>
-
----
-
-# Code - 通常サイズ
-
-```sh
-pnpm install -g @slidev/cli
-```
-
-<br>
-
-## Code Group
-
-::code-group
-
-```sh [npm]
-npm i @slidev/cli
-```
-
-```sh [yarn]
-yarn add @slidev/cli
-```
-
-```sh [pnpm]
-pnpm add @slidev/cli
-```
-
-::
-
----
-
-# Code - 小さいサイズ
-
-<div class="small-code">
-
-長いコード用：
-
-```sh
-pnpm install -g @slidev/cli && slidev init my-presentation --theme neon && cd my-presentation && pnpm install
-```
+- `Ctrl+C` - キャンセル
+- `Ctrl+D` - 終了
+- `Ctrl+L` - 画面クリア
+- `Tab` - オートコンプリート
+- `↑/↓` - 履歴
+- `?` - ヘルプ表示
 
 </div>
 
-<style>
-/* このスライドのコードを小さくする */
-.small-code pre.slidev-code code {
-  font-size: 1.0rem !important;
+</div>
+
+---
+layout: default
+---
+
+# 2. プロンプトのベストプラクティスが<br/>既に公式ドキュメントにある
+
+<div class="text-2xl">
+
+[Claude 4プロンプトエンジニアリングのベストプラクティス - Anthropic](https://docs.anthropic.com/ja/docs/build-with-claude/prompt-engineering/claude-4-best-practices)
+
+</div>
+
+<div class="mt-2">
+  <img src="/claude-best-practices.png" class="rounded-lg shadow-xl border border-gray-700" />
+</div>
+
+---
+layout: default
+---
+
+# 3. <span class="text-xs text-gray-400">比較的 </span>dotfilesで設定を管理できる
+
+```sh
+# 設定ファイルのパスを指定
+
+export CLAUDE_CONFIG_DIR=${XDG_CONFIG_HOME}/claude
+```
+
+<div class="mt-8 text-xl opacity-70">
+
+⚠️ **注意**: MCPの設定は`~/.claude/settings.json`に追加されるため厳しい
+
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# 4. CLIで動く
+
+<div class="text-6xl mt-10 neon-glow-purple">
+🖥️
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# CLIのメリット: <span class="neon-glow-orange text-6xl">自由</span>
+
+<div class="text-xl mt-10">
+<v-click>?🤔</v-click>
+</div>
+
+---
+layout: center
+---
+
+# - <ruby>WezTerm<rt>ターミナル</rt></ruby>も<ruby>Neovim<rt>エディタ</rt></ruby>もLuaで設定できる
+
+<br>
+
+# - コマンドの知識が活かせる
+
+---
+layout: center
+class: text-center
+---
+
+# 設定例を紹介
+
+<div class="text-5xl mt-10 neon-glow-cyan">
+⚙️ ✨
+</div>
+
+---
+layout: default
+---
+
+# 1. ペイン管理で画面をすっきり
+
+---
+layout: two-cols-header
+---
+
+# ペインって何?
+
+::left::
+
+## ペイン
+
+ウィンドウ内の分割された領域
+
+::right::
+
+<div class="border-2 border-gray-600 rounded-lg p-4 bg-gray-900">
+  <div class="text-center mb-2 text-sm opacity-60">ターミナルウィンドウ</div>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="border border-cyan-400 rounded p-4 bg-gray-800">
+      <div class="text-cyan-400 text-sm mb-2">ペイン1</div>
+      <div class="text-xs opacity-60">エディタ</div>
+    </div>
+    <div class="border border-green-400 rounded p-4 bg-gray-800">
+      <div class="text-green-400 text-sm mb-2">ペイン2</div>
+      <div class="text-xs opacity-60">Claude Code</div>
+    </div>
+    <div class="border border-purple-400 rounded p-4 bg-gray-800 col-span-2">
+      <div class="text-purple-400 text-sm mb-2">ペイン3</div>
+      <div class="text-xs opacity-60">ターミナル</div>
+    </div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# 1. ペイン管理で画面をすっきり
+
+- **必要なときだけ**Claudeのペインを表示
+- Claude Codeのペインを**Zoom**（最大化）
+- Neovimで開いて**見返す**
+
+<div class="mt-10 opacity-70">
+💡 画面の切り替えがスムーズに！
+</div>
+
+---
+layout: default
+---
+
+# 2. 複数のプロジェクト管理も楽々
+
+## WezTermのworkspaceで切り替え
+
+- 参考: [WezTermのworkspace機能](https://zenn.dev/sankantsu/articles/e713d52825dbbb)
+- タブのカスタマイズも可能
+- プロジェクトごとに独立した環境
+
+---
+layout: default
+---
+
+# あわせて設定しておきたい通知設定
+
+処理が終わったらパネルと音で通知
+
+```json {all|7-8|all}
+// ~/.config/claude/settings.json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude\" -message \"$(basename \"$PWD\")\" & \nafplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title \"Claude Notification\" -message \"$(basename \"$PWD\")\" & \nafplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  }
 }
-</style>
-
----
-
-# Neonカード
-
-<div class="grid grid-cols-2 gap-6">
-  <NeonCard
-    title="Feature 1"
-    subtitle="Amazing Feature"
-    icon="⚡"
-    glow-color="cyan"
-  >
-    これはNeonカードコンポーネントです。
-    グラスモーフィズムとネオングローを組み合わせています。
-  </NeonCard>
-</div>
-
----
-
-# Neonボタン
-
-<div class="flex gap-4 flex-wrap">
-  <NeonButton glow-color="cyan" @click="console.log('Clicked!')">
-    Click Me
-  </NeonButton>
-  
-  <NeonButton glow-color="matrix" variant="outline">
-    Outline
-  </NeonButton>
-  
-  <NeonButton glow-color="purple" size="lg" :flicker="true">
-    Large & Flicker
-  </NeonButton>
-  
-  <NeonButton glow-color="orange" variant="ghost">
-    Ghost Button
-  </NeonButton>
-</div>
-
-<br>
-<br>
-
-### リンクボタン
-
-<div class="flex gap-4">
-  <NeonButton
-    href="https://github.com/slidevjs/slidev"
-    target="_blank"
-    glow-color="yellow"
-  >
-    GitHub →
-  </NeonButton>
-  
-  <NeonButton
-    href="<https://sli.dev>"
-    target="_blank"
-    glow-color="pink"
-    variant="outline" >
-    Documentation
-  </NeonButton>
-</div>
-
----
-transition: slide-up
----
-
-# タイムライン
-
-<NeonTimeline
-  :items="[
-    {
-      title: '2020年',
-      subtitle: 'プログラミング開始',
-      description: 'Web開発の世界に足を踏み入れる',
-      icon: '🎯',
-      date: '1月'
-    },
-    {
-      title: '2021年',
-      subtitle: 'フロントエンド専門',
-      description: 'Vue.jsとReactを習得',
-      icon: '💻',
-      date: '6月'
-    },
-    {
-      title: '2022年',
-      subtitle: 'フルスタック開発',
-      description: 'バックエンドも含めた開発を開始',
-      icon: '🚀',
-      date: '3月'
-    },
-    {
-      title: '2023年',
-      subtitle: 'CLI効率化の探求',
-      description: 'NeovimとzshでDX向上',
-      icon: '⚡',
-      date: '9月'
-    }
-  ]"
-  glow-color="matrix"
-/>
-
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's control panel, [learn more](https://sli.dev/guide/navigation.html)
-
-## Keyboard Shortcuts
-
-|                                                    |                             |
-| -------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                | next animation or slide     |
-| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                      | previous slide              |
-| <kbd>down</kbd>                                    | next slide                  |
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. Adding your own custom components is also super easy.
-
-```html
-<Counter :count="10" />
 ```
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+🔔 [terminal-notifier](https://github.com/julienXX/terminal-notifier)
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+---
+layout: default
+---
+
+# あわせて設定しておきたい通知設定
+
+## 通知パネル消すためにマウスを使いたくない
+
+→ **Aliento**で解決
+
+[Aliento - Notification Manager](https://inchman.gumroad.com/l/Aliento)
+
+<div class="mt-10 opacity-70">
+キーボードだけで通知を管理！
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# CLIを使いこなせば<br/><span class="neon-glow-green text-5xl">認知負荷を下げられる</span>
+
+---
+layout: default
+---
+
+# せっかくならCLIの推し機能を<br/>Claude Codeで使いたい
+
+- プロンプトごとにジャンプしてスクロール
+- edit-command-line
+
+<div class="mt-10 text-3xl text-red-400">
+どちらも未対応😭
+</div>
+
+<div class="mt-6 opacity-70">
+
+- [Issue #1465](https://github.com/anthropics/claude-code/issues/1465)
+- [Issue #282](https://github.com/anthropics/claude-code/issues/282)
 
 </div>
-<div>
 
-```html
-<Tweet id="1390115482657726468" />
+---
+layout: default
+---
+
+# プロンプトごとにジャンプしてスクロール
+
+Hooksに仕込むがうまくいかず...
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\033]133;B\\033\\\\'"
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 
-<Tweet id="1390115482657726468" scale="0.65" />
+---
+layout: default
+---
 
+# edit-command-line
+
+wezterm cliで実現できそう
+
+<div class="mt-10 opacity-70">
+🚧 開発中...
 </div>
-</div>
+
+---
