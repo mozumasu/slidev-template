@@ -94,10 +94,41 @@
 }
 
 /* コードブロック */
-pre {
-  background: rgba(0, 0, 0, 0.1) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* Safari対応 */
+pre,
+.slidev-code {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); /* Safari対応 */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* code-groupのタブ部分 */
+.slidev-code-group-tabs,
+[class*="code-group"] .tabs,
+.code-tabs {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* タブアイテム */
+.slidev-code-group-tab,
+[class*="code-group"] .tab,
+.code-tab {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.3s ease;
+}
+
+/* アクティブタブ */
+.slidev-code-group-tab.active,
+[class*="code-group"] .tab.active,
+.code-tab.active,
+.slidev-code-group-tab[data-active="true"] {
+  background: rgba(139, 92, 246, 0.2) !important;
+  color: #ffffff !important;
+  border-bottom: 2px solid #8b5cf6 !important;
 }
 
 /* コードブロック内の文字サイズ（デフォルト） */
@@ -105,6 +136,7 @@ pre code,
 .shiki code,
 .slidev-code pre code {
   font-size: 1.5rem !important; /* デフォルトを大きく */
+  background: transparent !important;
 }
 
 /* スクロールバーのカスタマイズ - よりシンプルに */
