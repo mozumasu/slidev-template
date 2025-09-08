@@ -204,11 +204,26 @@ transition: slide-up
 layout: center
 ---
 
-# - <ruby>WezTerm<rt>ターミナル</rt></ruby>も<ruby>Neovim<rt>エディタ</rt></ruby>もLuaで設定できる
-
-<br>
-
-# - コマンドの知識が活かせる
+<div class="text-center space-y-8">
+  <div class="flex items-center justify-center gap-4">
+    <div class="text-4xl neon-glow-cyan">
+      <ruby>WezTerm<rt class="text-xs opacity-60">ターミナル</rt></ruby>
+    </div>
+    <span class="text-2xl">も</span>
+    <div class="text-4xl neon-glow-purple">
+      <ruby>Neovim<rt class="text-xs opacity-60">エディタ</rt></ruby>
+    </div>
+    <span class="text-2xl">も</span>
+    <div class="text-4xl neon-glow-orange">
+      <ruby>Lua<rt class="text-xs opacity-60">プログラミング言語</rt></ruby>
+    </div>
+    <span class="text-2xl">で設定できる</span>
+  </div>
+  
+  <div class="text-4xl mt-12 neon-glow-matrix flicker">
+    CLIの知識が活かせる
+  </div>
+</div>
 
 ---
 layout: center

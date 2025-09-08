@@ -382,6 +382,15 @@ onMounted(() => {
     0 0 5px #ffff00;
 }
 
+.theme-neon .role-text {
+  color: #fff;
+  text-shadow:
+    0 0 2px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 30px #ff10f0;
+}
+
 /* Tools Section */
 .tools-section {
   padding: 0;
@@ -469,6 +478,14 @@ onMounted(() => {
     0 0 5px #a78bfa;
 }
 
+.theme-neon .tool-name {
+  text-shadow:
+    0 0 2px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
+}
+
 /* Achievement Section */
 .achievement-section {
   margin-top: 0;
@@ -522,6 +539,14 @@ onMounted(() => {
   font-family: "Outfit", "Inter", sans-serif;
   line-height: 1.4;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.theme-neon .achievement-text {
+  color: #fff;
+  text-shadow:
+    0 0 2px rgba(255, 215, 0, 0.8),
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 /* Neon Theme */
