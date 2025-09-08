@@ -22,12 +22,17 @@ mdc: true
   <div class="font-handwritten-jp-casual neon-glow-purple text-2xl mb-2">CLI資産を活かせ !</div>
   <div>
     <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
-    <span class="font-handwritten-jp-casual neon-glow-pink-colored text-3xl">で整える</span>
+    <span class="font-handwritten-jp-casual neon-glow-purple text-3xl">で整える</span>
   </div>
-  <div class="font-handwritten-jp-cassual neon-glow-pink-colored text-4xl mt-6">アウトプットワークフロー</div>
+  <div class="font-handwritten-jp-cassual neon-glow-pink text-5xl mt-5">アウトプットワークフロー</div>
 </div>
 
-<div class="font-handwritten-jp-casual neon-glow-matrix-colored flicker-slow text-5xl absolute bottom-25 left-170 transform -rotate-15">2025/09/08 Qiita Bash</div>
+<div class="font-handwritten-jp-casual neon-glow-matrix-colored flicker-slow text-4xl absolute bottom-25 left-175 transform -rotate-15">2025/09/08<br> Qiita Bash</div>
+
+<br>
+<div class="opacity-70 mt-4">
+mozumasu
+</div>
 
 ---
 layout: center
