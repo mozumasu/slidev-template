@@ -99,7 +99,7 @@ export const NEON_THEMES: Record<NeonTheme, NeonSettings> = {
 
 // 次のNeonテーマを取得
 export const getNextNeonTheme = (current: NeonTheme): NeonTheme => {
-  const themes: NeonTheme[] = ["default", "cyberpunk", "synthwave"];
+  const themes: NeonTheme[] = ["synthwave", "cyberpunk", "default"];
   const currentIndex = themes.indexOf(current);
   const nextIndex = (currentIndex + 1) % themes.length;
   return themes[nextIndex];

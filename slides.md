@@ -19,17 +19,20 @@ mdc: true
 ---
 
 <div class="text-center">
-  <div class="font-handwritten-jp-casual text-2xl mb-2">CLI資産を活かせ !</div>
+  <div class="font-handwritten-jp-casual neon-glow-purple text-2xl mb-2">CLI資産を活かせ !</div>
   <div>
     <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
-    <span class="font-handwritten-jp-casual text-3xl">で整える</span>
+    <span class="font-handwritten-jp-casual neon-glow-purple text-3xl">で整える</span>
   </div>
-  <div class="font-handwritten-jp-cassual text-4xl mt-6">アウトプットワークフロー</div>
+  <div class="font-handwritten-jp-cassual neon-glow-pink text-5xl mt-5">アウトプットワークフロー</div>
 </div>
 
-<p class="opacity-35">もずます</p>
+<div class="font-handwritten-jp-casual neon-glow-matrix-colored flicker-slow text-4xl absolute bottom-25 left-175 transform -rotate-15">2025/09/08<br> Qiita Bash</div>
 
-<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2025/09/08 Qiita Bash</div>
+<br>
+<div class="opacity-70 mt-4">
+mozumasu
+</div>
 
 ---
 layout: center
@@ -118,7 +121,7 @@ layout: two-cols-header
 ## 便利ショートカットキー
 
 - ドキュメント: [Interactive Mode](https://docs.anthropic.com/ja/docs/claude-code/interactive-mode)
-- `?` を入力すると追加のショートカットが表示される
+- `?` でショートカット表示
   - **undo** - 直前の操作を取り消し
   - **suspend** - セッションを一時停止
 
@@ -201,11 +204,26 @@ transition: slide-up
 layout: center
 ---
 
-# - <ruby>WezTerm<rt>ターミナル</rt></ruby>も<ruby>Neovim<rt>エディタ</rt></ruby>もLuaで設定できる
-
-<br>
-
-# - コマンドの知識が活かせる
+<div class="text-center space-y-8">
+  <div class="flex items-center justify-center gap-4">
+    <div class="text-4xl neon-glow-cyan">
+      <ruby>WezTerm<rt class="text-xs opacity-60">ターミナル</rt></ruby>
+    </div>
+    <span class="text-2xl">も</span>
+    <div class="text-4xl neon-glow-purple">
+      <ruby>Neovim<rt class="text-xs opacity-60">エディタ</rt></ruby>
+    </div>
+    <span class="text-2xl">も</span>
+    <div class="text-4xl neon-glow-orange">
+      <ruby>Lua<rt class="text-xs opacity-60">プログラミング言語</rt></ruby>
+    </div>
+    <span class="text-2xl">で設定できる</span>
+  </div>
+  
+  <div class="text-4xl mt-12 neon-glow-matrix flicker-slow">
+    CLIの知識が活かせる
+  </div>
+</div>
 
 ---
 layout: center
@@ -636,10 +654,6 @@ class: text-center
 ---
 
 # ご清聴ありがとうございました
-
-<div class="mt-10 text-2xl opacity-70">
-  <p>@mozumasu</p>
-</div>
 
 <div class="mt-10">
   <div class="text-xl neon-glow-cyan">

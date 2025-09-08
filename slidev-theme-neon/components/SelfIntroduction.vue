@@ -324,15 +324,17 @@ onMounted(() => {
   font-size: 1.35rem;
   font-weight: 500;
   font-family: "Outfit", "Inter", sans-serif;
-  color: rgba(255, 255, 255, 0.7);
+  color: #fff;
   letter-spacing: 0.08em;
   line-height: 1;
   opacity: 1;
   margin-top: 0.5rem;
   position: relative;
   text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.1);
+    0 0 1px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
   backdrop-filter: blur(2px);
 }
 
@@ -373,6 +375,20 @@ onMounted(() => {
 .role-text {
   font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
   letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow:
+    0 0 1px #ffff00,
+    0 0 10px #ffff00,
+    0 0 5px #ffff00;
+}
+
+.theme-neon .role-text {
+  color: #fff;
+  text-shadow:
+    0 0 2px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 20px #ff10f0,
+    0 0 30px #ff10f0;
 }
 
 /* Tools Section */
@@ -387,10 +403,13 @@ onMounted(() => {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   opacity: 1;
   margin: 0 0 0.4rem 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow:
+    0 0 1px #ff10f0,
+    0 0 10px #ff10f0,
+    0 0 5px #ff10f0;
 }
 
 .tools-badges {
@@ -446,14 +465,25 @@ onMounted(() => {
 }
 
 .tool-name {
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   font-weight: 600;
   font-family: "Outfit", "Inter", "Hiragino Sans", sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
   position: relative;
   z-index: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow:
+    0 0 1px #8b5cf6,
+    0 0 10px #8b5cf6,
+    0 0 5px #a78bfa;
+}
+
+.theme-neon .tool-name {
+  text-shadow:
+    0 0 2px #0ff,
+    0 0 15px #0ff,
+    0 0 8px #0ff,
+    0 0 25px #0ff;
 }
 
 /* Achievement Section */
@@ -494,9 +524,12 @@ onMounted(() => {
   font-family: "Outfit", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff;
   opacity: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow:
+    0 0 1px #00ff41,
+    0 0 10px #00ff41,
+    0 0 5px #39ff14;
 }
 
 .achievement-text {
@@ -506,6 +539,14 @@ onMounted(() => {
   font-family: "Outfit", "Inter", sans-serif;
   line-height: 1.4;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.theme-neon .achievement-text {
+  color: #fff;
+  text-shadow:
+    0 0 2px rgba(255, 215, 0, 0.8),
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 /* Neon Theme */
@@ -552,27 +593,7 @@ onMounted(() => {
   /* ホバー効果を無効化 */
 }
 
-.theme-neon .avatar-name {
-  color: rgba(200, 200, 200, 0.85);
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.theme-neon .section-title,
-.theme-neon .achievement-label {
-  color: rgba(180, 180, 180, 0.6);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.theme-neon .role-content,
-.theme-neon .achievement-text {
-  color: rgba(220, 220, 220, 0.85);
-}
-
-.theme-neon .tool-name {
-  color: rgba(230, 230, 230, 0.9);
-}
+/* ネオンテーマではオーバーライドを削除（上記のネオン効果を維持） */
 
 .theme-ocean {
   --bg-color: rgba(240, 248, 255, 0.3);

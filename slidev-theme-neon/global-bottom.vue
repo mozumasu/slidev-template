@@ -5,11 +5,11 @@ import ThemeIndicator from "./components/ThemeIndicator.vue";
 
 // テーマプロパティ
 const props = defineProps<{
-  theme?: "neon";
+  theme?: "synthwave" | "neon";
 }>();
 
 // 状態
-const currentTheme = ref(props.theme || "neon");
+const currentTheme = ref(props.theme || "synthwave");
 const currentSlideNo = ref(1);
 
 // コンポーネント参照
@@ -70,6 +70,6 @@ onMounted(() => {
   <ThemeIndicator
     :current-theme="currentTheme"
     :neon-theme="getCurrentNeonTheme()"
-    @switch-theme="() => {}"
+    @switch-theme="() => neonRef?.switchNeonTheme()"
   />
 </template>
