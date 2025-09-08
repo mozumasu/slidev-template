@@ -4,7 +4,7 @@ import type { NeonTheme } from "../composables/useNeonThemes";
 
 // プロパティ
 const props = defineProps<{
-  currentTheme: "neon";
+  currentTheme: "synthwave" | "neon";
   neonTheme?: NeonTheme;
 }>();
 
@@ -15,27 +15,26 @@ const emit = defineEmits<{
 
 // 算出プロパティ
 const themeIcon = computed(() => "✨");
-const themeVariant = computed(() => {
-  if (props.neonTheme) {
-    return props.neonTheme.toUpperCase();
-  }
-  return "";
+
+// 現在のテーマ名を取得
+const displayThemeName = computed(() => {
+  // neonThemeが指定されていればそれを使用、なければsynthwave
+  const theme = props.neonTheme || 'synthwave';
+  return theme.toUpperCase();
 });
 
 const hintText = computed(() => {
-  return "Press W for neon style";
+  return "Press W to switch theme";
 });
 </script>
 
 <template>
   <div class="theme-indicator">
     <div
-      class="theme-badge neon"
+      :class="['theme-badge', neonTheme || 'synthwave']"
       @click="$emit('switchTheme')"
     >
-      {{ themeIcon }}
-      {{ currentTheme.toUpperCase() }}
-      <span v-if="themeVariant" class="theme-variant"> ({{ themeVariant }}) </span>
+      {{ themeIcon }} {{ displayThemeName }}
     </div>
     <div class="theme-hint">{{ hintText }}</div>
   </div>
@@ -70,6 +69,21 @@ const hintText = computed(() => {
 .theme-badge.neon {
   background: rgba(139, 92, 246, 0.8);
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.theme-badge.synthwave {
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%);
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.7);
+}
+
+.theme-badge.cyberpunk {
+  background: linear-gradient(135deg, #ff0080 0%, #00ff88 100%);
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
+}
+
+.theme-badge.default {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
 }
 
 .theme-badge:hover {

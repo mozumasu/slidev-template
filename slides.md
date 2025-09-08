@@ -220,7 +220,7 @@ layout: center
     <span class="text-2xl">で設定できる</span>
   </div>
   
-  <div class="text-4xl mt-12 neon-glow-matrix flicker">
+  <div class="text-4xl mt-12 neon-glow-matrix flicker-slow">
     CLIの知識が活かせる
   </div>
 </div>
@@ -654,10 +654,6 @@ class: text-center
 ---
 
 # ご清聴ありがとうございました
-
-<div class="mt-10 text-2xl opacity-70">
-  <p>@mozumasu</p>
-</div>
 
 <div class="mt-10">
   <div class="text-xl neon-glow-cyan">

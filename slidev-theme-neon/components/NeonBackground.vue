@@ -13,7 +13,7 @@ const props = defineProps<{
 }>()
 
 // 現在のNeonテーマ
-const currentNeonTheme = ref<NeonTheme>('default')
+const currentNeonTheme = ref<NeonTheme>('synthwave')
 const neonConfig = computed(() => NEON_THEMES[currentNeonTheme.value])
 
 // ポリゴン生成用の変数
