@@ -19,17 +19,15 @@ mdc: true
 ---
 
 <div class="text-center">
-  <div class="font-handwritten-jp-casual text-2xl mb-2">CLI資産を活かせ !</div>
+  <div class="font-handwritten-jp-casual neon-glow-purple text-2xl mb-2">CLI資産を活かせ !</div>
   <div>
     <span class="neon-glow-orange flicker text-7xl font-bold">Claude Code</span>
-    <span class="font-handwritten-jp-casual text-3xl">で整える</span>
+    <span class="font-handwritten-jp-casual neon-glow-pink-colored text-3xl">で整える</span>
   </div>
-  <div class="font-handwritten-jp-cassual text-4xl mt-6">アウトプットワークフロー</div>
+  <div class="font-handwritten-jp-cassual neon-glow-pink-colored text-4xl mt-6">アウトプットワークフロー</div>
 </div>
 
-<p class="opacity-35">もずます</p>
-
-<div class="font-handwritten-jp-casual text-green-400 text-5xl opacity-85 absolute bottom-25 left-170 transform -rotate-15">2025/09/08 Qiita Bash</div>
+<div class="font-handwritten-jp-casual neon-glow-matrix-colored flicker-slow text-5xl absolute bottom-25 left-170 transform -rotate-15">2025/09/08 Qiita Bash</div>
 
 ---
 layout: center
@@ -118,7 +116,7 @@ layout: two-cols-header
 ## 便利ショートカットキー
 
 - ドキュメント: [Interactive Mode](https://docs.anthropic.com/ja/docs/claude-code/interactive-mode)
-- `?` を入力すると追加のショートカットが表示される
+- `?` でショートカット表示
   - **undo** - 直前の操作を取り消し
   - **suspend** - セッションを一時停止
 
