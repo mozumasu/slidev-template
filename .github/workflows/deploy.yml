@@ -51,7 +51,8 @@ jobs:
         run: pnpm install --frozen-lockfile
         
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install chromium
+        run: |
+          pnpm exec playwright install --with-deps
         
       - name: Build Slidev
         run: pnpm build --base /${{ github.event.repository.name }}/
