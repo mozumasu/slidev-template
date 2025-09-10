@@ -17,7 +17,7 @@ info: |
 title: CLI資産を活かせ! Claude Codeで整えるアウトプットワークフロー
 mdc: true
 seoMeta:
-  ogImage: auto
+  ogImage: https://mozumasu.github.io/slidev-template/og-image.png
 ---
 
 <div class="text-center">
