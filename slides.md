@@ -16,6 +16,8 @@ info: |
 # transition: slide-left
 title: CLI資産を活かせ! Claude Codeで整えるアウトプットワークフロー
 mdc: true
+seoMeta:
+  ogImage: auto
 ---
 
 <div class="text-center">
