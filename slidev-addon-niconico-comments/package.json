@@ -1,0 +1,36 @@
+{
+  "name": "slidev-addon-niconico-comments",
+  "version": "1.0.0",
+  "description": "Niconico-style flowing comments addon for Slidev",
+  "keywords": [
+    "slidev-addon",
+    "slidev",
+    "niconico",
+    "comments",
+    "animation"
+  ],
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md"
+  },
+  "author": "mozumasu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=0.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mozumasu/slidev-template"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.1.0"
+  },
+  "peerDependencies": {
+    "@slidev/client": "^0.19.0"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  }
+}
