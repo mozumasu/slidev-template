@@ -25,7 +25,6 @@ const props = defineProps<{
 
 const commentElements = ref<CommentElement[]>([])
 const nextCommentId = ref(1000)
-const animationFrame = ref<number>()
 const containerRef = ref<HTMLDivElement>()
 const laneTiming = ref<number[]>([])
 
@@ -40,21 +39,17 @@ const clearAllComments = () => {
 
 const loadPresetComments = () => {
   if (!props.comments) {
-    console.log('No comments to load')
     return
   }
   
-  console.log('Loading preset comments:', props.comments.length, 'comments')
   props.comments.forEach((comment, index) => {
     setTimeout(() => {
-      console.log('Adding comment:', comment.text)
       addComment(comment.text, comment.color, comment.size, comment.position, comment.duration)
     }, index * 1000)
   })
 }
 
 watch(() => props.slideNumber, (newSlide) => {
-  console.log('Slide changed to:', newSlide, 'Comments:', props.comments)
   clearAllComments()
   if (props.comments && isEnabled.value) {
     loadPresetComments()
@@ -62,7 +57,6 @@ watch(() => props.slideNumber, (newSlide) => {
 })
 
 watch(() => props.enabled, (newVal) => {
-  console.log('Enabled changed to:', newVal)
   if (!newVal) {
     clearAllComments()
   } else if (props.comments) {
@@ -71,7 +65,6 @@ watch(() => props.enabled, (newVal) => {
 })
 
 watch(() => props.comments, (newComments) => {
-  console.log('Comments prop changed:', newComments)
   if (newComments && isEnabled.value) {
     clearAllComments()
     loadPresetComments()
@@ -131,24 +124,14 @@ const removeComment = (id: number) => {
   }
 }
 
-const handleKeyPress = (e: KeyboardEvent) => {
-  // C キーでコメント入力（global-bottom.vueと重複しないように削除）
-  // global-bottom.vueで統一的に処理
-}
-
 onMounted(() => {
-  console.log('NiconicoComments mounted. Enabled:', isEnabled.value, 'Comments:', props.comments)
   if (isEnabled.value && props.comments) {
     loadPresetComments()
   }
-  window.addEventListener('keydown', handleKeyPress)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeyPress)
-  if (animationFrame.value) {
-    cancelAnimationFrame(animationFrame.value)
-  }
+  // Cleanup if needed
 })
 
 defineExpose({

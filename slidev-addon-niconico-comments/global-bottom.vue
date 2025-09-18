@@ -21,7 +21,6 @@ const niconicoConfig = computed(() => {
   // @ts-ignore
   const globalConfig = window?.__slidev__?.configs?.niconico || {}
   const config = Object.keys(globalConfig).length > 0 ? globalConfig : props.niconico || {}
-  console.log('Getting niconico config from:', { global: globalConfig, props: props.niconico, final: config })
   return config
 })
 const currentComments = computed(() => commentsData.value[currentSlideNo.value] || [])
@@ -31,28 +30,22 @@ const toggleComments = () => {
 }
 
 const loadCommentsData = async () => {
-  console.log('loadCommentsData called, config:', niconicoConfig.value)
   if (niconicoConfig.value.comments) {
     try {
       if (typeof niconicoConfig.value.comments === 'string') {
-        console.log('Loading comments from URL:', niconicoConfig.value.comments)
         const response = await fetch(niconicoConfig.value.comments)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
         commentsData.value = data
-        console.log('Comments loaded successfully:', data)
       } else {
         commentsData.value = niconicoConfig.value.comments
-        console.log('Comments set from config:', niconicoConfig.value.comments)
       }
     } catch (error) {
       console.error('Failed to load comments:', error)
       commentsData.value = {}
     }
-  } else {
-    console.log('No comments configured')
   }
 }
 
@@ -71,7 +64,6 @@ onMounted(() => {
     } else {
       currentSlideNo.value = 1
     }
-    console.log('Current slide:', currentSlideNo.value, 'Comments for slide:', commentsData.value[currentSlideNo.value])
   }
 
   updateSlideNumber()
