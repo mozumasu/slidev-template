@@ -30,7 +30,7 @@ npm install slidev-addon-niconico-comments
 
 ### 基本設定
 
-`slides.md`のfrontmatterに以下を追加：
+`slides.md`のheadmatter（先頭のfrontmatter）に以下を追加：
 
 ```yaml
 ---
@@ -40,9 +40,11 @@ niconico:
   enabled: true
   speed: 5000
   maxLanes: 10
-  comments: "./comments.json"
+  comments: "/comments.json"
 ---
 ```
+
+コメントファイルは `public/comments.json` に配置し、パスは `/comments.json` のように `/` 始まりで指定してください（`./comments.json` のような相対パスは2枚目以降のスライドURL基準で解決されるため読み込めません）。`/` 始まりのパスはbase path配下（GitHub Pagesなど）でも動作します。
 
 ### 設定オプション
 
@@ -51,7 +53,7 @@ niconico:
 | `enabled`  | `true`      | コメント機能の有効/無効        |
 | `speed`    | `5000`      | コメントが流れる速度（ミリ秒） |
 | `maxLanes` | `10`        | 同時表示可能なレーン数         |
-| `comments` | `undefined` | コメントデータファイルへのパス |
+| `comments` | `undefined` | コメントデータファイルへのパス（`public/` に配置し `/` 始まりで指定） |
 
 ### キーボードショートカット
 
@@ -101,4 +103,3 @@ pnpm dev
 ## ライセンス
 
 MIT
-

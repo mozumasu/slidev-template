@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
-
-interface Comment {
-  id: number
-  text: string
-  color?: string
-  size?: 'small' | 'medium' | 'large'
-  position?: 'top' | 'middle' | 'bottom'
-  duration?: number
-}
+import { computed, onUnmounted, ref, watch } from 'vue'
+import type { Comment, CommentPosition, CommentSize } from '../types'
 
 interface CommentElement extends Comment {
+  id: number
   lane: number
-  startTime: number
 }
 
-const props = defineProps<{
+const {
+  comments,
+  enabled,
+  speed = 5000,
+  maxLanes = 10,
+  slideNumber,
+} = defineProps<{
   comments?: Comment[]
   enabled?: boolean
   speed?: number
@@ -25,60 +23,72 @@ const props = defineProps<{
 
 const commentElements = ref<CommentElement[]>([])
 const nextCommentId = ref(1000)
-const containerRef = ref<HTMLDivElement>()
 const laneTiming = ref<number[]>([])
+const timers = new Set<ReturnType<typeof setTimeout>>()
 
-const speed = computed(() => props.speed || 5000)
-const maxLanes = computed(() => props.maxLanes || 10)
-const isEnabled = computed(() => props.enabled !== false)
+const isEnabled = computed(() => enabled !== false)
+
+const schedule = (fn: () => void, delay: number) => {
+  const timer = setTimeout(() => {
+    timers.delete(timer)
+    fn()
+  }, delay)
+  timers.add(timer)
+}
+
+const clearTimers = () => {
+  timers.forEach((timer) => clearTimeout(timer))
+  timers.clear()
+}
 
 const clearAllComments = () => {
+  clearTimers()
   commentElements.value = []
-  laneTiming.value = Array(maxLanes.value).fill(0)
+  laneTiming.value = Array(maxLanes).fill(0)
 }
 
 const loadPresetComments = () => {
-  if (!props.comments) {
+  if (!comments) {
     return
   }
-  
-  props.comments.forEach((comment, index) => {
-    setTimeout(() => {
+
+  comments.forEach((comment, index) => {
+    schedule(() => {
       addComment(comment.text, comment.color, comment.size, comment.position, comment.duration)
     }, index * 1000)
   })
 }
 
-watch(() => props.slideNumber, (newSlide) => {
-  clearAllComments()
-  if (props.comments && isEnabled.value) {
-    loadPresetComments()
-  }
-})
-
-watch(() => props.enabled, (newVal) => {
-  if (!newVal) {
+watch(
+  [() => slideNumber, () => comments],
+  () => {
     clearAllComments()
-  } else if (props.comments) {
-    loadPresetComments()
-  }
-})
+    if (comments && isEnabled.value) {
+      loadPresetComments()
+    }
+  },
+  { immediate: true },
+)
 
-watch(() => props.comments, (newComments) => {
-  if (newComments && isEnabled.value) {
-    clearAllComments()
-    loadPresetComments()
-  }
-}, { immediate: true })
+watch(
+  () => enabled,
+  (newVal) => {
+    if (!newVal) {
+      clearAllComments()
+    } else if (comments) {
+      loadPresetComments()
+    }
+  },
+)
 
-const findAvailableLane = (position?: string): number => {
+const findAvailableLane = (position?: CommentPosition): number => {
   const now = Date.now()
-  const startLane = position === 'top' ? 0 : position === 'bottom' ? Math.floor(maxLanes.value * 0.7) : Math.floor(maxLanes.value * 0.3)
-  const endLane = position === 'top' ? Math.floor(maxLanes.value * 0.3) : position === 'bottom' ? maxLanes.value : Math.floor(maxLanes.value * 0.7)
-  
+  const startLane = position === 'top' ? 0 : position === 'bottom' ? Math.floor(maxLanes * 0.7) : Math.floor(maxLanes * 0.3)
+  const endLane = position === 'top' ? Math.floor(maxLanes * 0.3) : position === 'bottom' ? maxLanes : Math.floor(maxLanes * 0.7)
+
   let bestLane = startLane
   let earliestTime = laneTiming.value[startLane] || 0
-  
+
   for (let i = startLane; i < endLane; i++) {
     if (!laneTiming.value[i] || laneTiming.value[i] < now) {
       return i
@@ -88,69 +98,68 @@ const findAvailableLane = (position?: string): number => {
       bestLane = i
     }
   }
-  
+
   return bestLane
 }
 
-const addComment = (text: string, color?: string, size?: string, position?: string, duration?: number) => {
+const addComment = (
+  text: string,
+  color?: string,
+  size?: CommentSize,
+  position?: CommentPosition,
+  duration?: number,
+) => {
   if (!isEnabled.value) return
-  
+
   const lane = findAvailableLane(position)
-  const commentDuration = duration || speed.value
-  
+  const commentDuration = duration || speed
+
   const newComment: CommentElement = {
     id: nextCommentId.value++,
     text,
     color: color || '#ffffff',
-    size: size as 'small' | 'medium' | 'large' || 'medium',
-    position: position as 'top' | 'middle' | 'bottom' || 'middle',
+    size: size || 'medium',
+    position: position || 'middle',
     duration: commentDuration,
     lane,
-    startTime: Date.now()
   }
-  
+
   commentElements.value.push(newComment)
   laneTiming.value[lane] = Date.now() + commentDuration * 0.3
-  
-  setTimeout(() => {
+
+  schedule(() => {
     removeComment(newComment.id)
   }, commentDuration + 1000)
 }
 
 const removeComment = (id: number) => {
-  const index = commentElements.value.findIndex(c => c.id === id)
+  const index = commentElements.value.findIndex((c) => c.id === id)
   if (index !== -1) {
     commentElements.value.splice(index, 1)
   }
 }
 
-onMounted(() => {
-  if (isEnabled.value && props.comments) {
-    loadPresetComments()
-  }
-})
-
 onUnmounted(() => {
-  // Cleanup if needed
+  clearTimers()
 })
 
 defineExpose({
   addComment,
-  clearAllComments
+  clearAllComments,
 })
 </script>
 
 <template>
-  <div v-if="isEnabled" ref="containerRef" class="niconico-comments-container">
+  <div v-if="isEnabled" class="niconico-comments-container">
     <div
       v-for="comment in commentElements"
       :key="comment.id"
       class="niconico-comment"
-      :class="[`size-${comment.size}`, `lane-${comment.lane}`]"
+      :class="`size-${comment.size}`"
       :style="{
         '--comment-color': comment.color,
         '--comment-duration': `${comment.duration}ms`,
-        '--lane-position': `${comment.lane * (100 / maxLanes)}%`
+        top: `${comment.lane * (100 / maxLanes)}%`,
       }"
     >
       {{ comment.text }}
@@ -175,14 +184,13 @@ defineExpose({
   white-space: nowrap;
   color: var(--comment-color, #ffffff);
   font-weight: bold;
-  text-shadow: 
+  text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000,
     0 0 3px #000;
   animation: flow-comment var(--comment-duration, 5000ms) linear forwards;
-  transform: translateY(var(--lane-position));
   font-family: 'MS PGothic', 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
@@ -200,10 +208,10 @@ defineExpose({
 
 @keyframes flow-comment {
   from {
-    transform: translateX(100vw) translateY(var(--lane-position));
+    transform: translateX(100vw);
   }
   to {
-    transform: translateX(-100%) translateY(var(--lane-position));
+    transform: translateX(-100%);
   }
 }
 </style>

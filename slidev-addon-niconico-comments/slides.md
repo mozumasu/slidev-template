@@ -15,7 +15,7 @@ Slidevでニコニコ動画のようなコメントを流すことができま�
 
 <br>
 
-### 使い方
+## 使い方
 
 - **W**: コメント表示のON/OFF
 - **C**: 手動でコメントを入力
@@ -49,14 +49,14 @@ Slidevでニコニコ動画のようなコメントを流すことができま�
 
 # デモページ3
 
-### 設定例
+## 設定例
 
 ```yaml
 niconico:
   enabled: true # 有効/無効
   speed: 5000 # 流れる速度（ミリ秒）
   maxLanes: 10 # 最大レーン数
-  comments: "./comments.json" # コメントファイル
+  comments: "/comments.json" # コメントファイル (public/ に配置)
 ```
 
 ---

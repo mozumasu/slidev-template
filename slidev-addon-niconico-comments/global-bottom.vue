@@ -1,104 +1,72 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
+import { configs, useNav } from '@slidev/client'
 import NiconicoComments from './components/NiconicoComments.vue'
+import type { CommentsData, NiconicoConfig } from './types'
 
-const props = defineProps<{
-  niconico?: {
-    enabled?: boolean
-    speed?: number
-    maxLanes?: number
-    comments?: any
-  }
-}>()
+const { currentPage } = useNav()
 
-const currentSlideNo = ref(1)
-const commentsData = ref<Record<number, any[]>>({})
-const commentsRef = ref<InstanceType<typeof NiconicoComments>>()
+// headmatter の niconico: を設定として読む
+const niconicoConfig = computed<NiconicoConfig>(
+  () => (configs as { niconico?: NiconicoConfig }).niconico ?? {},
+)
+
+const commentsData = ref<CommentsData>({})
+const commentsRef = useTemplateRef<InstanceType<typeof NiconicoComments>>('commentsRef')
 const isEnabled = ref(true)
 
-// Slidevのfrontmatterから設定を取得
-const niconicoConfig = computed(() => {
-  // @ts-ignore
-  const globalConfig = window?.__slidev__?.configs?.niconico || {}
-  const config = Object.keys(globalConfig).length > 0 ? globalConfig : props.niconico || {}
-  return config
-})
-const currentComments = computed(() => commentsData.value[currentSlideNo.value] || [])
+const currentComments = computed(() => commentsData.value[currentPage.value] ?? [])
 
 const toggleComments = () => {
   isEnabled.value = !isEnabled.value
 }
 
 const loadCommentsData = async () => {
-  if (niconicoConfig.value.comments) {
-    try {
-      if (typeof niconicoConfig.value.comments === 'string') {
-        const response = await fetch(niconicoConfig.value.comments)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = await response.json()
-        commentsData.value = data
-      } else {
-        commentsData.value = niconicoConfig.value.comments
-      }
-    } catch (error) {
-      console.error('Failed to load comments:', error)
-      commentsData.value = {}
+  const source = niconicoConfig.value.comments
+  if (!source) return
+
+  if (typeof source !== 'string') {
+    commentsData.value = source
+    return
+  }
+
+  // 先頭が "/" のパスは base path (GitHub Pages 等) 配下でも解決できるようにする
+  const url = source.startsWith('/')
+    ? `${import.meta.env.BASE_URL.replace(/\/$/, '')}${source}`
+    : source
+
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
+    commentsData.value = await response.json()
+  } catch (error) {
+    console.warn(`[niconico-comments] Failed to load comments from "${url}":`, error)
+    commentsData.value = {}
   }
 }
 
-const addManualComment = (text: string, options?: any) => {
-  if (commentsRef.value) {
-    commentsRef.value.addComment(text, options?.color, options?.size, options?.position)
+const handleToggleEvent = () => {
+  toggleComments()
+}
+
+const handleAddManualCommentEvent = () => {
+  const text = prompt('コメントを入力してください:')
+  if (text) {
+    commentsRef.value?.addComment(text)
   }
 }
 
 onMounted(() => {
-  const updateSlideNumber = () => {
-    const path = window.location.pathname
-    const match = path.match(/\/(\d+)$/)
-    if (match) {
-      currentSlideNo.value = parseInt(match[1])
-    } else {
-      currentSlideNo.value = 1
-    }
-  }
-
-  updateSlideNumber()
   loadCommentsData()
-
-  window.addEventListener('popstate', updateSlideNumber)
-  
-  const handleKeyPress = (event: KeyboardEvent) => {
-    // W キーでコメント表示切替
-    if (event.key === 'w' || event.key === 'W') {
-      toggleComments()
-    } 
-    // C キーでコメント入力
-    else if (event.key === 'c' || event.key === 'C') {
-      const text = prompt('コメントを入力してください:')
-      if (text) {
-        addManualComment(text)
-      }
-    }
-  }
-  
-  window.addEventListener('keydown', handleKeyPress)
-
-  const interval = setInterval(updateSlideNumber, 500)
-
-  return () => {
-    window.removeEventListener('popstate', updateSlideNumber)
-    window.removeEventListener('keydown', handleKeyPress)
-    clearInterval(interval)
-  }
+  window.addEventListener('toggle-niconico-comments', handleToggleEvent)
+  window.addEventListener('add-manual-comment', handleAddManualCommentEvent)
 })
 
-defineExpose({
-  addManualComment,
-  toggleComments
+onUnmounted(() => {
+  window.removeEventListener('toggle-niconico-comments', handleToggleEvent)
+  window.removeEventListener('add-manual-comment', handleAddManualCommentEvent)
 })
 </script>
 
@@ -109,9 +77,9 @@ defineExpose({
     :enabled="isEnabled && niconicoConfig.enabled !== false"
     :speed="niconicoConfig.speed"
     :max-lanes="niconicoConfig.maxLanes"
-    :slide-number="currentSlideNo"
+    :slide-number="currentPage"
   />
-  
+
   <div v-if="niconicoConfig.enabled !== false" class="niconico-controls">
     <button @click="toggleComments" class="toggle-button">
       {{ isEnabled ? '🔊' : '🔇' }}
