@@ -1,111 +1,28 @@
-# slidev-theme
+# slidev-template
 
-## 環境構築
+[Slidev](https://sli.dev) 製のスライドと、自作テーマ・アドオンをまとめた pnpm workspace です。
 
-```sh
-pnpm add -D @slidev/cli
-# テーマのsetupで使用
-pnpm add -D @slidev/types
-```
+## 構成
 
-## スライドの追加
+| パス | 内容 |
+| --- | --- |
+| `slides.md` | スライド本体（テーマ: `./slidev-theme-neon`） |
+| `slidev-theme-neon/` | ネオン風テーマ（`w` キーでバリエーション切替） |
+| `slidev-theme-sea/` | 海（Three.js の水面）テーマ |
+| `slidev-addon-niconico-comments/` | ニコニコ動画風コメントを流すアドオン |
+| `docs/github-pages-setup.md` | GitHub Pages デプロイ手順 |
 
-```sh
-slidev slides.md
-```
-
-## 動作確認
-
-デフォルトテーマで試してみる
+## 使い方
 
 ```sh
-pnpm add -D @slidev/theme-default
+pnpm install
+pnpm dev      # 開発サーバーを起動してブラウザで開く
+pnpm build    # dist/ に静的ビルド
+pnpm export   # PDF エクスポート
 ```
 
-```sh
-pnpm run dev
-```
+main ブランチへの push で `.github/workflows/deploy.yml` が GitHub Pages へ自動デプロイします。
 
----
+## テーマ開発メモ
 
-## markdownlintの設定
-
-フォーマットによりfrontMatterなどのレイアウトが崩れるため 、以下のルールを無効化する
-
-- MD033/no-inline-html : Inline HTML : <https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md033.md>
-- MD025/single-title/single-h1 : Multiple top-level headings in the same document : <https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md025.md>
-- MD003/heading-style : Heading style : <https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md003.md>
-- MD022/blanks-around-headings : Headings should be surrounded by blank lines : <https://github.com/DavidAnson/markdownlint/blob/v0.35.0/doc/md022.md>
-
-## フォーマッターの設定
-
-これが
-
-```text
----
-transition: fade-out
----
-```
-
-このようにフォーマットされてしまわないようにprettierの設定をする
-
-```text
----
-## transition: fade-out
-```
-
-```sh
-pnpm i -D prettier prettier-plugin-slidev
-```
-
-設定ファイルを追加する
-
-```json:/.prettierrc
-{
-  "overrides": [
-    {
-      "files": ["slides.md", "pages/*.md"],
-      "options": {
-        "parser": "slidev",
-        "plugins": ["prettier-plugin-slidev"]
-      }
-    }
-  ]
-}
-```
-
-> ref: [Prettier Plugin | Slidev](https://sli.dev/features/prettier-plugin)
-
----
-
-## スライドテーマの作成
-
-ジェネレーターの使用してテーマを作成する
-
-```sh
-pnpm create slidev-theme slidev-theme-sea
-```
-
-> [!NOTE]
-> テーマは以下の規約に従う必要があります：
-> パッケージ名はslidev-theme-で始める必要があります。
-> 例として、slidev-theme-nameまたは@scope/slidev-theme- nameのような形式が適切です。
-> package.json ファイルの keywords フィールドに "slidev-theme" と "slidev" を追加してください。
-> ref: [Writing Themes | Slidev](https://sli.dev/guide/write-theme)
-
-```sh
-# 作成したテーマのディレクトリへ移動
-cd !$
-
-# 起動してテーマの内容を確認
-pnpm run dev
-```
-
-自分のスライドに設定できるか確認する
-テーマを公開していない場合は直接ディレクトリを指定する
-
-```sh
----
-theme: ./slidev-theme-sea
----
-```
+テーマの作り方・lint / formatter の設定メモは [docs/theme-development.md](docs/theme-development.md) を参照してください。
