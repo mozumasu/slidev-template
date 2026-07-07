@@ -3,36 +3,25 @@ import { computed } from "vue";
 import type { WaveTheme } from "../composables/useOceanThemes";
 
 // プロパティ
-const props = defineProps<{
+const { currentTheme, waveTheme } = defineProps<{
   currentTheme: "ocean";
   waveTheme?: WaveTheme;
 }>();
 
-// イベントの発行
-const emit = defineEmits<{
-  toggleTheme: [];
-}>();
+const themeIcon = "🌊";
+const hintText = "Press W for wave style";
 
-// 算出プロパティ
-const themeIcon = computed(() => "🌊");
 const themeVariant = computed(() => {
-  if (props.waveTheme) {
-    return props.waveTheme.toUpperCase();
+  if (waveTheme) {
+    return waveTheme.toUpperCase();
   }
   return "";
-});
-
-const hintText = computed(() => {
-  return "Press W for wave style";
 });
 </script>
 
 <template>
   <div class="theme-indicator">
-    <div
-      class="theme-badge ocean"
-      @click="$emit('toggleTheme')"
-    >
+    <div class="theme-badge ocean">
       {{ themeIcon }}
       {{ currentTheme.toUpperCase() }}
       <span v-if="themeVariant" class="wave-theme"> ({{ themeVariant }}) </span>
@@ -60,16 +49,10 @@ const hintText = computed(() => {
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   user-select: none;
-}
-
-.theme-badge.neon {
-  background: rgba(139, 92, 246, 0.8);
-  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 .theme-badge.ocean {

@@ -1,4 +1,5 @@
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onUnmounted } from "vue";
+import type * as THREE from "three";
 
 /**
  * Three.jsアニメーション用のパフォーマンス監視コンポーザブル
@@ -40,10 +41,14 @@ export function usePerformance() {
   const updateFPS = () => {
     frameCount++;
     const currentTime = performance.now();
-    
+
     if (currentTime >= lastTime + 1000) {
-      metrics.value.fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-      metrics.value.frameTime = Math.round((currentTime - lastTime) / frameCount);
+      metrics.value.fps = Math.round(
+        (frameCount * 1000) / (currentTime - lastTime),
+      );
+      metrics.value.frameTime = Math.round(
+        (currentTime - lastTime) / frameCount,
+      );
       frameCount = 0;
       lastTime = currentTime;
     }
@@ -56,9 +61,13 @@ export function usePerformance() {
     // @ts-ignore - performance.memory is Chrome-specific
     if (performance.memory) {
       // @ts-ignore
-      metrics.value.memoryUsed = Math.round(performance.memory.usedJSHeapSize / 1048576);
+      metrics.value.memoryUsed = Math.round(
+        performance.memory.usedJSHeapSize / 1048576,
+      );
       // @ts-ignore
-      metrics.value.memoryLimit = Math.round(performance.memory.jsHeapSizeLimit / 1048576);
+      metrics.value.memoryLimit = Math.round(
+        performance.memory.jsHeapSizeLimit / 1048576,
+      );
     }
   };
 
@@ -66,7 +75,7 @@ export function usePerformance() {
    * Three.jsレンダラー情報を更新
    * @param renderer Three.jsレンダラーインスタンス
    */
-  const updateRendererInfo = (renderer: any) => {
+  const updateRendererInfo = (renderer: THREE.WebGLRenderer) => {
     if (renderer && renderer.info) {
       const info = renderer.info;
       metrics.value.drawCalls = info.render.calls || 0;
@@ -80,24 +89,24 @@ export function usePerformance() {
    * パフォーマンスを監視
    * @param renderer 詳細なメトリクス用のThree.jsレンダラー（オプション）
    */
-  const startMonitoring = (renderer?: any) => {
+  const startMonitoring = (renderer?: THREE.WebGLRenderer | null) => {
     if (isMonitoring.value) return;
-    
+
     isMonitoring.value = true;
-    
+
     const monitor = () => {
       updateFPS();
       updateMemory();
-      
+
       if (renderer) {
         updateRendererInfo(renderer);
       }
-      
+
       if (isMonitoring.value) {
         animationId = requestAnimationFrame(monitor);
       }
     };
-    
+
     monitor();
   };
 
@@ -143,11 +152,11 @@ export function usePerformance() {
    */
   const getPerformanceGrade = (): string => {
     const fps = metrics.value.fps;
-    if (fps >= 55) return 'A';
-    if (fps >= 45) return 'B';
-    if (fps >= 30) return 'C';
-    if (fps >= 20) return 'D';
-    return 'F';
+    if (fps >= 55) return "A";
+    if (fps >= 45) return "B";
+    if (fps >= 30) return "C";
+    if (fps >= 20) return "D";
+    return "F";
   };
 
   /**
@@ -167,7 +176,7 @@ export function usePerformance() {
     const grade = getPerformanceGrade();
     const fps = metrics.value.fps;
     const memory = metrics.value.memoryUsed;
-    
+
     return `Performance: ${grade} | FPS: ${fps} | Memory: ${memory}MB`;
   };
 
@@ -181,28 +190,16 @@ export function usePerformance() {
     metrics,
     isMonitoring,
     showMetrics,
-    
+
     // メソッド
     startMonitoring,
     stopMonitoring,
     toggleMetrics,
     resetMetrics,
-    
+
     // ユーティリティ
     getPerformanceGrade,
     isPerformanceAcceptable,
     getPerformanceSummary,
   };
-}
-
-/**
- * グローバルパフォーマンスモニターのシングルトン
- */
-let globalMonitor: ReturnType<typeof usePerformance> | null = null;
-
-export function useGlobalPerformance() {
-  if (!globalMonitor) {
-    globalMonitor = usePerformance();
-  }
-  return globalMonitor;
 }

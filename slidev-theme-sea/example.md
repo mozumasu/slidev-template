@@ -2,6 +2,9 @@
 theme: ./
 ---
 
+<!-- rumdl-disable -->
+<!-- markdown formatter がスライド区切りの frontmatter (--- 直後の行) を壊すため無効化 -->
+
 # Slidev Theme Starter
 
 Presentation slides for developers
@@ -48,7 +51,7 @@ Hover on the bottom-left corner to see the navigation's controls panel
 
 ---
 layout: image-right
-image: <https://cover.sli.dev>
+image: https://cover.sli.dev
 ---
 
 # Code

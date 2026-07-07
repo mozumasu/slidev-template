@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import { ref, computed, onMounted, onUnmounted, watch, useTemplateRef } from "vue";
 import * as THREE from "three";
 import {
   WAVE_THEMES,
@@ -16,13 +16,8 @@ import {
 import { usePerformance } from "../composables/usePerformance";
 
 // プロパティ
-const props = defineProps<{
+const { visible } = defineProps<{
   visible: boolean;
-}>();
-
-// イベントの発行
-const emit = defineEmits<{
-  switchTheme: [];
 }>();
 
 // 現在の波テーマ
@@ -39,7 +34,24 @@ let renderer: THREE.WebGLRenderer | null = null;
 let waterMesh: THREE.Mesh | null = null;
 let animationId: number | null = null;
 
-const canvasRef = ref<HTMLCanvasElement>();
+// 遅延初期化タイマー（アンマウント時に破棄する）
+let pendingTimers: ReturnType<typeof setTimeout>[] = [];
+let disposed = false;
+
+const scheduleTimeout = (fn: () => void, delay: number) => {
+  const id = setTimeout(() => {
+    pendingTimers = pendingTimers.filter((t) => t !== id);
+    if (!disposed) fn();
+  }, delay);
+  pendingTimers.push(id);
+};
+
+const clearPendingTimers = () => {
+  pendingTimers.forEach((id) => clearTimeout(id));
+  pendingTimers = [];
+};
+
+const canvasRef = useTemplateRef<HTMLCanvasElement>("canvasRef");
 
 // パフォーマンス監視
 const { startMonitoring, stopMonitoring, metrics, isPerformanceAcceptable } = usePerformance();
@@ -103,26 +115,31 @@ const switchWaveTheme = () => {
 
   // 新しいテーマで水面を再初期化
   cleanupWater();
-  setTimeout(() => {
+  scheduleTimeout(() => {
     initWaterSurface();
+    // 監視は古いレンダラーに紐づいているため再起動する
+    stopMonitoring();
+    startMonitoring(renderer);
     animateWater();
   }, 100);
 };
 
 // ライフサイクル
 onMounted(() => {
-  if (props.visible) {
-    setTimeout(() => {
+  if (visible) {
+    scheduleTimeout(() => {
       initWaterSurface();
       startMonitoring(renderer);
     }, 100);
-    setTimeout(() => animateWater(), 200);
+    scheduleTimeout(() => animateWater(), 200);
   }
 
   window.addEventListener("resize", handleResize);
 });
 
 onUnmounted(() => {
+  disposed = true;
+  clearPendingTimers();
   stopMonitoring();
   cleanupWater();
   window.removeEventListener("resize", handleResize);
@@ -130,10 +147,10 @@ onUnmounted(() => {
 
 // 表示状態を監視
 watch(
-  () => props.visible,
+  () => visible,
   (newVal, oldVal) => {
     if (newVal && !oldVal) {
-      setTimeout(() => {
+      scheduleTimeout(() => {
         initWaterSurface();
         animateWater();
       }, 100);
