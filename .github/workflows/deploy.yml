@@ -3,9 +3,8 @@ name: Deploy to GitHub Pages
 on:
   workflow_dispatch: # 手動実行を許可
   push:
-    branches: 
+    branches:
       - main
-      - master # mainまたはmasterブランチへのpushで自動実行
 
 permissions:
   contents: read
@@ -22,44 +21,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
-          
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10
-          run_install: false
-          
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-          
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-            
+          node-version: "lts/*"
+          cache: pnpm
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
-      - name: Install Playwright Browsers
-        run: |
-          pnpm exec playwright install --with-deps
-        
+
+      # seoMeta.ogImage: auto の OGP 画像生成に Chromium が必要
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Build Slidev
         run: pnpm build --base /${{ github.event.repository.name }}/
-        
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
