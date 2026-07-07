@@ -28,19 +28,19 @@
 .center-content :deep(h1) {
   @apply text-5xl font-bold mb-4;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
 }
 
 .center-content :deep(h2) {
   @apply text-3xl font-semibold mb-3;
   color: #ffffff;
-  text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+  text-shadow: 0 0 15px color-mix(in srgb, var(--slidev-theme-primary) 60%, transparent);
 }
 
 .center-content :deep(h3) {
   @apply text-2xl font-medium mb-2;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--slidev-theme-primary) 40%, transparent);
 }
 
 /* ネオンエフェクトクラス */

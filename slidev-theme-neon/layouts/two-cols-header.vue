@@ -16,7 +16,7 @@
 
 <style scoped>
 .two-cols-header {
-  min-height: 100vh;
+  height: 100%;
   padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
@@ -30,13 +30,13 @@
 .header-section :deep(h1) {
   @apply text-5xl font-bold mb-2;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
 }
 
 .header-section :deep(h2) {
   @apply text-3xl font-semibold mb-2;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--slidev-theme-primary) 60%, transparent);
 }
 
 /* コンテンツグリッド - 2カラム部分 */
@@ -60,7 +60,7 @@
 .column-right :deep(h2) {
   @apply text-2xl font-semibold mb-3;
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--slidev-theme-primary) 40%, transparent);
 }
 
 .column-left :deep(h3),

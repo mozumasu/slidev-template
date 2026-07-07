@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import {
   NEON_THEMES,
   getNextNeonTheme,
@@ -7,7 +7,7 @@ import {
 } from '../composables/useNeonThemes'
 
 // プロパティ
-const props = defineProps<{
+const { visible, slideNumber } = defineProps<{
   visible: boolean
   slideNumber?: number
 }>()
@@ -18,31 +18,11 @@ const neonConfig = computed(() => NEON_THEMES[currentNeonTheme.value])
 
 // ポリゴン生成用の変数
 type Range = [number, number]
-type Distribution =
-  | 'full'
-  | 'top'
-  | 'bottom'
-  | 'left'
-  | 'right'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
-  | 'center'
-  | 'topmost'
 
-const currentSlideNo = ref(props.slideNumber || 1)
-const distribution = ref<Distribution>('full')
+const currentSlideNo = computed(() => slideNumber || 1)
 const seed = ref('default')
 const animationTime = ref(0)
 const hue = ref(0)
-
-// スライド番号の変更を監視
-watch(() => props.slideNumber, (newVal) => {
-  if (newVal) {
-    currentSlideNo.value = newVal
-  }
-})
 
 // シンプルなシード付きランダム関数
 function seededRandom(seed: string) {
@@ -57,65 +37,20 @@ function seededRandom(seed: string) {
   }
 }
 
-// 分布を制限に変換
-function distributionToLimits(dist: Distribution) {
-  const min = -0.2
-  const max = 1.2
-  let x: Range = [min, max]
-  let y: Range = [min, max]
-  
-  function intersection(a: Range, b: Range): Range {
-    return [Math.max(a[0], b[0]), Math.min(a[1], b[1])]
-  }
-  
-  const limits = dist.split('-')
-  
-  for (const limit of limits) {
-    switch (limit) {
-      case 'topmost':
-        y = intersection(y, [-0.5, 0])
-        break
-      case 'top':
-        y = intersection(y, [min, 0.6])
-        break
-      case 'bottom':
-        y = intersection(y, [0.4, max])
-        break
-      case 'left':
-        x = intersection(x, [min, 0.6])
-        break
-      case 'right':
-        x = intersection(x, [0.4, max])
-        break
-      case 'xcenter':
-        x = intersection(x, [0.25, 0.75])
-        break
-      case 'ycenter':
-        y = intersection(y, [0.25, 0.75])
-        break
-      case 'center':
-        x = intersection(x, [0.25, 0.75])
-        y = intersection(y, [0.25, 0.75])
-        break
-      case 'full':
-        x = intersection(x, [0, 1])
-        y = intersection(y, [0, 1])
-        break
-      default:
-        break
-    }
-  }
-  
-  return { x, y }
+// ポリゴン頂点の分布範囲（画面全体）
+const POINT_LIMITS: { x: Range; y: Range } = {
+  x: [0, 1],
+  y: [0, 1],
 }
 
 function distance2([x1, y1]: Range, [x2, y2]: Range) {
   return (x2 - x1) ** 2 + (y2 - y1) ** 2
 }
 
-function usePoly(number = 16) {
+function usePoly(getCount: () => number) {
   function getPoints(): Range[] {
-    const limits = distributionToLimits(distribution.value)
+    const limits = POINT_LIMITS
+    const number = getCount()
     const rng = seededRandom(`${seed.value}-${currentSlideNo.value}`)
     const polyConfig = neonConfig.value.polygonConfig
     
@@ -144,7 +79,13 @@ function usePoly(number = 16) {
   )
   
   function jumpPoints() {
-    const newPoints = new Set(getPoints())
+    const generated = getPoints()
+    // 頂点数が変わったら morph できないため全差し替え
+    if (generated.length !== points.value.length) {
+      points.value = generated
+      return
+    }
+    const newPoints = new Set(generated)
     points.value = points.value.map((o) => {
       let minDistance = Number.POSITIVE_INFINITY
       let closest: Range | undefined
@@ -160,43 +101,54 @@ function usePoly(number = 16) {
     })
   }
   
-  // スライド変更を監視してポイントを更新
-  watch(currentSlideNo, () => {
+  // スライド変更・シード変更を監視してポイントを更新
+  watch([currentSlideNo, seed], () => {
     jumpPoints()
   })
   
   return poly
 }
 
-// Neonテーマ用のポリゴンを作成
-const poly1 = usePoly(10)
-const poly2 = usePoly(6)
-const poly3 = usePoly(3)
+// Neonテーマ用のポリゴンを作成（頂点数はテーマ切替に追従する）
+const poly1 = usePoly(() => neonConfig.value.polygonConfig.counts[0])
+const poly2 = usePoly(() => neonConfig.value.polygonConfig.counts[1])
+const poly3 = usePoly(() => neonConfig.value.polygonConfig.counts[2])
 
 // Neonテーマの変更を監視してポリゴンを再生成
 watch(currentNeonTheme, (newTheme) => {
-  console.log('Neon theme switched to:', newTheme)
-  // ポリゴン再生成のためにシードを更新
   seed.value = `${newTheme}-${Date.now()}`
 })
 
 // Neonテーマ切り替え関数
 const switchNeonTheme = () => {
   currentNeonTheme.value = getNextNeonTheme(currentNeonTheme.value)
-  console.log('Neon theme switched to:', currentNeonTheme.value)
 }
 
 // アニメーションループ
+let rafId: number | undefined
+
 onMounted(() => {
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  )
+
   const animate = () => {
-    animationTime.value += neonConfig.value.effects.animationSpeed
-    const range = neonConfig.value.effects.hueRotationRange
-    hue.value = 
-      Math.sin(animationTime.value * 0.3) * (range * 0.7) +
-      Math.cos(animationTime.value * 0.7) * (range * 0.3)
-    requestAnimationFrame(animate)
+    if (visible && !prefersReducedMotion.matches) {
+      animationTime.value += neonConfig.value.effects.animationSpeed
+      const range = neonConfig.value.effects.hueRotationRange
+      hue.value =
+        Math.sin(animationTime.value * 0.3) * (range * 0.7) +
+        Math.cos(animationTime.value * 0.7) * (range * 0.3)
+    }
+    rafId = requestAnimationFrame(animate)
   }
-  animate()
+  rafId = requestAnimationFrame(animate)
+})
+
+onUnmounted(() => {
+  if (rafId !== undefined) {
+    cancelAnimationFrame(rafId)
+  }
 })
 
 // メソッドと状態を公開

@@ -11,7 +11,7 @@
   h1 {
     @apply text-5xl font-bold mb-6;
     color: #ffffff;
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
   }
 
   h1 + p {
@@ -33,27 +33,31 @@
   line-height: 1.75;
 }
 
-/* デフォルトレイアウトの基本フォントサイズ */
+/* デフォルトレイアウトのベーススタイル */
 .slidev-layout.default {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+  line-height: 1.75;
 }
 
 .slidev-layout.default h1 {
   @apply text-5xl font-bold mb-6;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
 }
 
 .slidev-layout.default h2 {
   @apply text-3xl font-semibold mb-4;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
 }
 
 .slidev-layout.default h3 {
   @apply text-2xl font-medium mb-3;
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--slidev-theme-primary) 40%, transparent);
 }
 
 .slidev-layout.default p {
@@ -69,17 +73,17 @@
 .slidev-layout.intro h2 {
   @apply text-3xl font-semibold mb-4;
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--slidev-theme-primary) 80%, transparent);
 }
 
 .slidev-layout h2 {
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--slidev-theme-primary) 60%, transparent);
 }
 
 .slidev-layout h3 {
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--slidev-theme-primary) 40%, transparent);
 }
 
 .slidev-layout a {
@@ -128,9 +132,9 @@ pre,
 [class*="code-group"] .tab.active,
 .code-tab.active,
 .slidev-code-group-tab[data-active="true"] {
-  background: rgba(139, 92, 246, 0.2) !important;
+  background: color-mix(in srgb, var(--slidev-theme-primary) 20%, transparent) !important;
   color: #ffffff !important;
-  border-bottom: 2px solid #8b5cf6 !important;
+  border-bottom: 2px solid var(--slidev-theme-primary) !important;
 }
 
 /* コードブロック内の文字サイズ（デフォルト） */
@@ -146,6 +150,7 @@ pre code,
 .small-code .shiki code,
 .small-code pre code {
   font-size: 1.0rem !important;
+  /* 26行超のコードを1スライドに収めるための圧縮値。増やすとスライドから溢れる */
   line-height: 0.5 !important;
 }
 
@@ -237,10 +242,10 @@ pre,
 .neon-glow-purple {
   color: #fff;
   text-shadow:
-    0 0 1px #8b5cf6,
-    0 0 10px #8b5cf6,
-    0 0 20px #8b5cf6,
-    0 0 30px #8b5cf6;
+    0 0 1px var(--slidev-theme-primary),
+    0 0 10px var(--slidev-theme-primary),
+    0 0 20px var(--slidev-theme-primary),
+    0 0 30px var(--slidev-theme-primary);
 }
 
 /* イエローネオン */
@@ -274,10 +279,10 @@ pre,
 .neon-glow-purple-colored {
   color: #a78bfa;
   text-shadow:
-    0 0 1px #8b5cf6,
-    0 0 10px #8b5cf6,
-    0 0 20px #8b5cf6,
-    0 0 30px #8b5cf6;
+    0 0 1px var(--slidev-theme-primary),
+    0 0 10px var(--slidev-theme-primary),
+    0 0 20px var(--slidev-theme-primary),
+    0 0 30px var(--slidev-theme-primary);
 }
 
 .neon-glow-yellow-colored {
@@ -427,15 +432,15 @@ pre,
   57%,
   100% {
     text-shadow:
-      0 0 2px #8b5cf6,
-      0 0 25px #8b5cf6,
+      0 0 2px var(--slidev-theme-primary),
+      0 0 25px var(--slidev-theme-primary),
       0 0 10px #a78bfa,
-      0 0 40px #8b5cf6;
+      0 0 40px var(--slidev-theme-primary);
   }
   20%,
   24%,
   55% {
-    text-shadow: 0 0 1px #8b5cf6;
+    text-shadow: 0 0 1px var(--slidev-theme-primary);
   }
 }
 
@@ -536,152 +541,7 @@ pre,
   animation: neon-flicker 3s infinite alternate;
 }
 
-/* Text Size Utilities - サイズ専用クラス */
-/* 極小サイズ */
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-/* 小サイズ */
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-/* 標準サイズ */
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-/* 大サイズ */
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-/* 特大サイズ */
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1;
-}
-
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
-}
-
-/* Font Weight Utilities - 太さ専用クラス */
-.font-thin {
-  font-weight: 100;
-}
-
-.font-light {
-  font-weight: 300;
-}
-
-.font-normal {
-  font-weight: 400;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-extrabold {
-  font-weight: 800;
-}
-
-.font-black {
-  font-weight: 900;
-}
-
-/* Letter Spacing Utilities - 文字間隔専用クラス */
-.tracking-tighter {
-  letter-spacing: -0.05em;
-}
-
-.tracking-tight {
-  letter-spacing: -0.025em;
-}
-
-.tracking-normal {
-  letter-spacing: 0;
-}
-
-.tracking-wide {
-  letter-spacing: 0.025em;
-}
-
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
-.tracking-widest {
-  letter-spacing: 0.1em;
-}
-
+/* UnoCSSに存在しない文字間隔ユーティリティ */
 .tracking-mega {
   letter-spacing: 0.25em;
-}
-
-/* Text Transform Utilities - 大文字・小文字変換 */
-.uppercase {
-  text-transform: uppercase;
-}
-
-.lowercase {
-  text-transform: lowercase;
-}
-
-.capitalize {
-  text-transform: capitalize;
-}
-
-.normal-case {
-  text-transform: none;
 }

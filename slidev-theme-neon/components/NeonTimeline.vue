@@ -16,11 +16,11 @@ interface Props {
   animated?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  orientation: 'vertical',
-  glowColor: 'matrix',
-  animated: true
-})
+const {
+  orientation = 'vertical',
+  glowColor = 'matrix',
+  animated = true,
+} = defineProps<Props>()
 
 const glowClasses = computed(() => {
   const colorMap = {
@@ -67,7 +67,7 @@ const glowClasses = computed(() => {
       glow: 'neon-glow-orange'
     }
   }
-  return colorMap[props.glowColor]
+  return colorMap[glowColor]
 })
 </script>
 
@@ -81,7 +81,7 @@ const glowClasses = computed(() => {
   >
     <div 
       v-for="(item, index) in items"
-      :key="index"
+      :key="`${item.title}-${index}`"
       class="timeline-item"
       :style="animated ? { animationDelay: `${index * 0.2}s` } : {}"
     >

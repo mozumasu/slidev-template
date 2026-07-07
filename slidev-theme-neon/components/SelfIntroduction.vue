@@ -1,67 +1,50 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
-// Props for theme customization
+interface ProfileTool {
+  name: string;
+  logo?: string;
+  emoji?: string;
+}
+
 interface Props {
-  theme?: "neon" | "ocean" | "auto";
+  variant?: "neon" | "ocean";
   showAnimation?: boolean;
   compact?: boolean;
   profileImage?: string;
+  name?: string;
+  role?: string;
+  tools?: ProfileTool[];
+  achievement?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  theme: "auto",
-  showAnimation: true,
-  compact: false,
-  profileImage: "/images/profile_mozumasu.jpeg",
-});
-
-// Profile data
-const profile = {
-  name: "mozumasu",
-  role: "インフラエンジニア",
-  tools: {
-    terminal: "wezterm",
-    editor: "Neovim",
-    ime: "SKK",
-  },
-  achievement: "Software Design 6月号にweztermの記事を寄稿しました",
-};
+const {
+  variant = "neon",
+  showAnimation = true,
+  compact = false,
+  profileImage: profileImageProp = "/images/profile_mozumasu.jpeg",
+  name = "mozumasu",
+  role = "インフラエンジニア",
+  tools = [
+    { name: "wezterm", logo: "https://wezterm.org/favicon.svg" },
+    {
+      name: "Neovim",
+      logo: "https://avatars.githubusercontent.com/u/6471485?s=200&v=4",
+    },
+    { name: "SKK", emoji: "⌨️" },
+  ],
+  achievement = "Software Design 6月号にweztermの記事を寄稿しました",
+} = defineProps<Props>();
 
 // Profile image path with base path handling
 const profileImage = computed(() => {
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  const imagePath = props.profileImage;
-  
-  // If the path starts with /, prepend the base URL
-  if (imagePath.startsWith('/')) {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const imagePath = profileImageProp;
+
+  if (imagePath.startsWith("/")) {
     return baseUrl + imagePath.slice(1);
   }
   return imagePath;
-});
-
-// Auto theme detection (based on current background theme)
-const detectedTheme = ref<"neon" | "ocean">("ocean");
-
-// Try to detect theme from global variables or DOM
-const detectTheme = () => {
-  // Check if we're in a neon theme environment
-  if (typeof window !== "undefined") {
-    const body = document.body;
-    const hasNeon =
-      body.classList.contains("theme-neon") ||
-      getComputedStyle(body).backgroundColor.includes("0, 0, 0") ||
-      document.querySelector('[class*="neon"]');
-    detectedTheme.value = hasNeon ? "neon" : "ocean";
-  }
-};
-
-// Computed theme
-const currentTheme = computed(() => {
-  if (props.theme === "auto") {
-    return detectedTheme.value;
-  }
-  return props.theme;
 });
 
 // Animation delay for staggered entrance
@@ -70,16 +53,10 @@ const animationDelays = {
   tools: "0.2s",
   achievement: "0.4s",
 };
-
-// Mounted lifecycle
-import { onMounted } from "vue";
-onMounted(() => {
-  detectTheme();
-});
 </script>
 
 <template>
-  <div :class="['profile-container', `container-theme-${currentTheme}`]">
+  <div :class="['profile-container', `container-theme-${variant}`]">
     <!-- Profile Title Outside Card -->
     <h1 class="profile-title-outside" :style="{ animationDelay: '0s' }">
       Profile
@@ -89,7 +66,7 @@ onMounted(() => {
     <div
       :class="[
         'self-introduction',
-        `theme-${currentTheme}`,
+        `theme-${variant}`,
         { compact: compact, animated: showAnimation },
       ]"
     >
@@ -103,7 +80,7 @@ onMounted(() => {
           <h3 class="section-title">ROLE</h3>
           <div class="role-content">
             <span class="role-icon">💻</span>
-            <span class="role-text">{{ profile.role }}</span>
+            <span class="role-text">{{ role }}</span>
           </div>
         </div>
 
@@ -114,25 +91,17 @@ onMounted(() => {
         >
           <h3 class="section-title">MY DEV SETUP</h3>
           <div class="tools-badges">
-            <div class="tool-badge">
+            <div v-for="tool in tools" :key="tool.name" class="tool-badge">
               <img
-                src="https://wezterm.org/favicon.svg"
-                alt="wezterm"
+                v-if="tool.logo"
+                :src="tool.logo"
+                :alt="tool.name"
                 class="tool-logo"
               />
-              <span class="tool-name">{{ profile.tools.terminal }}</span>
-            </div>
-            <div class="tool-badge">
-              <img
-                src="https://avatars.githubusercontent.com/u/6471485?s=200&v=4"
-                alt="neovim"
-                class="tool-logo"
-              />
-              <span class="tool-name">{{ profile.tools.editor }}</span>
-            </div>
-            <div class="tool-badge">
-              <span class="tool-emoji">⌨️</span>
-              <span class="tool-name">{{ profile.tools.ime }}</span>
+              <span v-else-if="tool.emoji" class="tool-emoji">{{
+                tool.emoji
+              }}</span>
+              <span class="tool-name">{{ tool.name }}</span>
             </div>
           </div>
         </div>
@@ -147,7 +116,7 @@ onMounted(() => {
               <span class="achievement-icon">📚</span>
               <span class="achievement-label">Recent Achievement</span>
             </div>
-            <div class="achievement-text">{{ profile.achievement }}</div>
+            <div class="achievement-text">{{ achievement }}</div>
           </div>
         </div>
       </div>
@@ -159,22 +128,20 @@ onMounted(() => {
             <img :src="profileImage" alt="Profile" class="avatar-image" />
           </div>
         </div>
-        <div class="avatar-name">mozumasu</div>
+        <div class="avatar-name">{{ name }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
-
 /* Container */
 .profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
   gap: 1.5rem;
   padding: 3rem 0;
   box-sizing: border-box;
@@ -304,15 +271,6 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.avatar-text {
-  font-size: 3rem;
-  font-weight: 700;
-  font-family: "Space Grotesk", "Outfit", sans-serif;
-  color: var(--accent-color);
-  letter-spacing: -0.02em;
-  text-shadow: var(--text-glow);
-}
-
 .avatar-image {
   width: 100%;
   height: 100%;
@@ -438,14 +396,6 @@ onMounted(() => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.tool-badge:hover {
-  /* ホバー効果を無効化 */
-}
-
-.tool-badge:active {
-  /* アクティブ効果を無効化 */
-}
-
 .tool-logo {
   width: 1rem;
   height: 1rem;
@@ -500,10 +450,6 @@ onMounted(() => {
   box-shadow:
     inset 0 2px 4px rgba(0, 0, 0, 0.15),
     inset 0 -1px 2px rgba(255, 255, 255, 0.2);
-}
-
-.achievement-badge:hover {
-  /* ホバー効果を無効化 */
 }
 
 .achievement-header {
@@ -589,12 +535,6 @@ onMounted(() => {
     inset 0 -1px 2px rgba(255, 255, 255, 0.1);
 }
 
-.theme-neon .achievement-badge:hover {
-  /* ホバー効果を無効化 */
-}
-
-/* ネオンテーマではオーバーライドを削除（上記のネオン効果を維持） */
-
 .theme-ocean {
   --bg-color: rgba(240, 248, 255, 0.3);
   --primary-text: #1e40af;
@@ -645,10 +585,6 @@ onMounted(() => {
     inset 0 -1px 2px rgba(255, 255, 255, 0.3);
 }
 
-.theme-ocean .achievement-badge:hover {
-  /* ホバー効果を無効化 */
-}
-
 .theme-ocean .avatar-name {
   color: rgba(30, 64, 175, 0.9);
   text-shadow:
@@ -686,11 +622,6 @@ onMounted(() => {
   .content-section {
     text-align: center;
     padding-top: 3rem;
-  }
-
-  .profile-title {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
   }
 
   .role-content {
@@ -732,10 +663,6 @@ onMounted(() => {
     height: 120px;
   }
 
-  .avatar-text {
-    font-size: 2rem;
-  }
-
   .achievement-badge {
     padding: 0.75rem 1.5rem;
   }
@@ -753,15 +680,6 @@ onMounted(() => {
 .compact .avatar-frame {
   width: 120px;
   height: 120px;
-}
-
-.compact .avatar-text {
-  font-size: 2rem;
-}
-
-.compact .profile-title {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .compact .role-section {

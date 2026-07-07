@@ -8,7 +8,6 @@ export interface NeonColors {
   layer1: NeonGradient;
   layer2: NeonGradient;
   layer3: NeonGradient;
-  layer4?: NeonGradient;
 }
 
 export interface NeonEffects {
@@ -38,7 +37,6 @@ export const NEON_THEMES: Record<NeonTheme, NeonSettings> = {
       layer1: { from: "#8b5cf6", to: "rgba(255, 255, 255, 0.1)" }, // 紫
       layer2: { from: "#2f96ad", to: "rgba(255, 255, 255, 0.1)" }, // 青
       layer3: { from: "#d946ef", to: "rgba(255, 255, 255, 0.1)" }, // マゼンタ
-      layer4: { from: "#06b6d4", to: "#67e8f9" },
     },
     effects: {
       blurIntensity: 70,
@@ -59,7 +57,6 @@ export const NEON_THEMES: Record<NeonTheme, NeonSettings> = {
       layer1: { from: "#ff00ff", to: "rgba(255, 0, 255, 0.1)" }, // マゼンタ
       layer2: { from: "#00ffff", to: "rgba(0, 255, 255, 0.1)" }, // シアン
       layer3: { from: "#ffff00", to: "rgba(255, 255, 0, 0.1)" }, // イエロー
-      layer4: { from: "#ff0080", to: "#80ff00" },
     },
     effects: {
       blurIntensity: 80,
@@ -80,7 +77,6 @@ export const NEON_THEMES: Record<NeonTheme, NeonSettings> = {
       layer1: { from: "#ff006e", to: "rgba(255, 0, 110, 0.1)" }, // ピンク
       layer2: { from: "#8338ec", to: "rgba(131, 56, 236, 0.1)" }, // パープル
       layer3: { from: "#3a86ff", to: "rgba(58, 134, 255, 0.1)" }, // ブルー
-      layer4: { from: "#fb5607", to: "#ffbe0b" },
     },
     effects: {
       blurIntensity: 60,

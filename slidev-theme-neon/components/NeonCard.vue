@@ -10,11 +10,7 @@ interface Props {
   flicker?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  glowColor: 'purple',
-  hover: true,
-  flicker: false
-})
+const { glowColor = 'purple', hover = true, flicker = false } = defineProps<Props>()
 
 const glowBorderClass = computed(() => {
   const colorMap = {
@@ -25,11 +21,11 @@ const glowBorderClass = computed(() => {
     yellow: 'border-yellow-400 shadow-yellow-400/50',
     orange: 'border-orange-400 shadow-orange-400/50'
   }
-  return colorMap[props.glowColor]
+  return colorMap[glowColor]
 })
 
 const glowTextClass = computed(() => {
-  return `neon-glow-${props.glowColor}`
+  return `neon-glow-${glowColor}`
 })
 </script>
 

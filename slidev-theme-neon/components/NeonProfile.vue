@@ -16,12 +16,10 @@ interface Props {
   glowColor?: 'cyan' | 'matrix' | 'purple' | 'pink' | 'yellow' | 'orange'
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  glowColor: 'cyan'
-})
+const { glowColor = 'cyan' } = defineProps<Props>()
 
 const glowClass = computed(() => {
-  return `neon-glow-${props.glowColor}`
+  return `neon-glow-${glowColor}`
 })
 
 const glowBorderClass = computed(() => {
@@ -33,7 +31,7 @@ const glowBorderClass = computed(() => {
     yellow: 'border-yellow-400 shadow-yellow-400/50',
     orange: 'border-orange-400 shadow-orange-400/50'
   }
-  return colorMap[props.glowColor]
+  return colorMap[glowColor]
 })
 
 function getSocialIcon(platform: string) {
@@ -69,8 +67,8 @@ function getSocialIcon(platform: string) {
 
       <div v-if="skills && skills.length" class="skills-section">
         <span 
-          v-for="(skill, index) in skills" 
-          :key="index"
+          v-for="(skill, index) in skills"
+          :key="`${skill}-${index}`"
           class="skill-tag"
           :class="[glowBorderClass, index % 2 === 0 ? 'flicker' : '']"
         >
@@ -79,9 +77,9 @@ function getSocialIcon(platform: string) {
       </div>
 
       <div v-if="social && social.length" class="social-section">
-        <a 
-          v-for="link in social" 
-          :key="link.platform"
+        <a
+          v-for="(link, linkIndex) in social"
+          :key="`${link.platform}-${linkIndex}`"
           :href="link.url"
           target="_blank"
           rel="noopener noreferrer"

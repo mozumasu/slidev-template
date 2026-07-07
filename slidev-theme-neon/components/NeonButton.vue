@@ -11,13 +11,15 @@ interface Props {
   disabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  size: 'md',
-  variant: 'solid',
-  glowColor: 'cyan',
-  flicker: false,
-  disabled: false
-})
+const {
+  href,
+  target,
+  size = 'md',
+  variant = 'solid',
+  glowColor = 'cyan',
+  flicker = false,
+  disabled = false,
+} = defineProps<Props>()
 
 const emit = defineEmits<{
   click: [event: MouseEvent]
@@ -29,9 +31,10 @@ const sizeClasses = computed(() => {
     md: 'px-4 py-2 text-base',
     lg: 'px-6 py-3 text-lg'
   }
-  return sizes[props.size]
+  return sizes[size]
 })
 
+// UnoCSSが静的解析できるよう、クラス名はすべて完全なリテラルで持つ
 const glowClasses = computed(() => {
   const colorMap = {
     cyan: {
@@ -40,6 +43,7 @@ const glowClasses = computed(() => {
       text: 'text-cyan-400',
       bg: 'bg-cyan-400/20',
       hover: 'hover:bg-cyan-400/30',
+      bgHover: 'hover:bg-cyan-400/20',
       glow: 'neon-glow-cyan'
     },
     matrix: {
@@ -48,6 +52,7 @@ const glowClasses = computed(() => {
       text: 'text-green-400',
       bg: 'bg-green-400/20',
       hover: 'hover:bg-green-400/30',
+      bgHover: 'hover:bg-green-400/20',
       glow: 'neon-glow-matrix'
     },
     purple: {
@@ -56,6 +61,7 @@ const glowClasses = computed(() => {
       text: 'text-purple-400',
       bg: 'bg-purple-400/20',
       hover: 'hover:bg-purple-400/30',
+      bgHover: 'hover:bg-purple-400/20',
       glow: 'neon-glow-purple'
     },
     pink: {
@@ -64,6 +70,7 @@ const glowClasses = computed(() => {
       text: 'text-pink-400',
       bg: 'bg-pink-400/20',
       hover: 'hover:bg-pink-400/30',
+      bgHover: 'hover:bg-pink-400/20',
       glow: 'neon-glow-pink'
     },
     yellow: {
@@ -72,6 +79,7 @@ const glowClasses = computed(() => {
       text: 'text-yellow-400',
       bg: 'bg-yellow-400/20',
       hover: 'hover:bg-yellow-400/30',
+      bgHover: 'hover:bg-yellow-400/20',
       glow: 'neon-glow-yellow'
     },
     orange: {
@@ -80,59 +88,64 @@ const glowClasses = computed(() => {
       text: 'text-orange-400',
       bg: 'bg-orange-400/20',
       hover: 'hover:bg-orange-400/30',
+      bgHover: 'hover:bg-orange-400/20',
       glow: 'neon-glow-orange'
     }
   }
-  return colorMap[props.glowColor]
+  return colorMap[glowColor]
 })
 
 const variantClasses = computed(() => {
   const colors = glowClasses.value
   const variants = {
     solid: `${colors.bg} ${colors.border} ${colors.hover} text-white`,
-    outline: `bg-transparent ${colors.border} ${colors.text} hover:${colors.bg}`,
-    ghost: `bg-transparent border-transparent ${colors.text} hover:${colors.bg}`
+    outline: `bg-transparent ${colors.border} ${colors.text} ${colors.bgHover}`,
+    ghost: `bg-transparent border-transparent ${colors.text} ${colors.bgHover}`
   }
-  return variants[props.variant]
+  return variants[variant]
 })
 
+const tag = computed(() => (href && !disabled ? 'a' : 'button'))
+
+// target="_blank" のリンクは rel を明示して window.opener 経由の参照を遮断する
+const rel = computed(() =>
+  target === '_blank' ? 'noopener noreferrer' : undefined
+)
+
 function handleClick(event: MouseEvent) {
-  if (props.disabled) return
-  
-  if (props.href) {
-    if (props.target === '_blank') {
-      window.open(props.href, '_blank', 'noopener,noreferrer')
-    } else {
-      window.location.href = props.href
-    }
+  if (disabled) {
+    event.preventDefault()
+    return
   }
-  
   emit('click', event)
 }
 </script>
 
 <template>
-  <button
+  <component
+    :is="tag"
     class="neon-button"
     :class="[
       sizeClasses,
       variantClasses,
       glowClasses.border,
       glowClasses.shadow,
-      { 
+      {
         'flicker': flicker,
         'opacity-50 cursor-not-allowed': disabled,
-        'cursor-pointer': !disabled && !href,
-        'cursor-pointer': href
+        'cursor-pointer': !disabled
       }
     ]"
-    :disabled="disabled"
+    :href="tag === 'a' ? href : undefined"
+    :target="tag === 'a' ? target : undefined"
+    :rel="tag === 'a' ? rel : undefined"
+    :disabled="tag === 'button' ? disabled : undefined"
     @click="handleClick"
   >
     <span class="button-content">
       <slot />
     </span>
-  </button>
+  </component>
 </template>
 
 <style scoped>

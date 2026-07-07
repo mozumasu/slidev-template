@@ -3,39 +3,31 @@ import { computed } from "vue";
 import type { NeonTheme } from "../composables/useNeonThemes";
 
 // プロパティ
-const props = defineProps<{
-  currentTheme: "synthwave" | "neon";
+const { neonTheme = "synthwave" } = defineProps<{
   neonTheme?: NeonTheme;
 }>();
 
 // イベントの発行
-const emit = defineEmits<{
+defineEmits<{
   switchTheme: [];
 }>();
 
-// 算出プロパティ
-const themeIcon = computed(() => "✨");
+const themeIcon = "✨";
+const hintText = "Press W to switch theme";
 
 // 現在のテーマ名を取得
-const displayThemeName = computed(() => {
-  // neonThemeが指定されていればそれを使用、なければsynthwave
-  const theme = props.neonTheme || 'synthwave';
-  return theme.toUpperCase();
-});
-
-const hintText = computed(() => {
-  return "Press W to switch theme";
-});
+const displayThemeName = computed(() => neonTheme.toUpperCase());
 </script>
 
 <template>
   <div class="theme-indicator">
-    <div
-      :class="['theme-badge', neonTheme || 'synthwave']"
+    <button
+      type="button"
+      :class="['theme-badge', neonTheme]"
       @click="$emit('switchTheme')"
     >
       {{ themeIcon }} {{ displayThemeName }}
-    </div>
+    </button>
     <div class="theme-hint">{{ hintText }}</div>
   </div>
 </template>
@@ -59,6 +51,7 @@ const hintText = computed(() => {
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -98,11 +91,5 @@ const hintText = computed(() => {
   padding: 2px 6px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
-}
-
-.theme-variant {
-  font-size: 0.9em;
-  opacity: 0.8;
-  margin-left: 4px;
 }
 </style>
