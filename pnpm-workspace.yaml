@@ -1,0 +1,8 @@
+packages:
+  - slidev-theme-neon
+  - slidev-theme-sea
+  - slidev-addon-niconico-comments
+
+allowBuilds:
+  esbuild: true
+  playwright-chromium: true
